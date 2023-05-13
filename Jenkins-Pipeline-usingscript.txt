@@ -1,0 +1,28 @@
+CI/CD Pipeline
+-------------------
+
+Speed is the key to modern software development. The monolithic all-or-nothing paradigm of traditional waterfall software development has largely been replaced by rapid iterative techniques that support development and release. These techniques go by several names, including continuous integration, continuous delivery and continuous deployment.
+
+
+Continuous Delivery is the frequent shipping of code to a given environment (such as test or production) via manual release. Continuous Deployment is the automated release of code to a production environment
+
+
+Configure below tools in jenkins
+1. Git
+2. Maven
+3. Java
+
+steps
+create pipeline project
+clone project from github
+Run the pipeline Job
+
+1.Get the code from github
+      https://github.com/cubeiplKumar/JenkinsPipelineDemo.git
+
+2. Start jenkins server
+      configure(in global tool configuration)
+	-git.exe
+	-maven
+
+3. create a jenkins job using 'pipeline'
