@@ -1,0 +1,86 @@
+Continuous Integration(CI)
+
+
+To improve the efficiency of your software development workflow, you should use continuous integration. 
+
+Continuous integration (CI) is a development practice where development teams make small, frequent changes to code. An automated build verifies the code each time developers check their changes into the version control repository. As a result, development teams can detect problems early. Continuous integration is the first part of CI/CD, a practice that enables application development teams to release incremental code changes to production server quickly and regularly.
+
+
+What does a CI server do?
+
+A continuous integration server (sometimes known as a build server) essentially manages the shared repository and acts as a referee for the code coming in. 
+When developers commit to the repository, the CI server initiates a build and documents the results of the build. 
+Typically, the developer that committed the code change to the repository will receive an email notification with the results.
+
+The majority of teams building software today are practicing continuous integration. Of those teams practicing continuous integration, most rely on a CI server to automate builds.
+
+
+the goal of CI is “to establish a consistent and automated way to build, package, and test applications, leading to better software quality.” 
+
+“Continuous Integration: Improving Software Quality and Reducing Risk”
+Continuous Integration doesn’t get rid of bugs, but it does make them dramatically easier to find and remove.”
+
+Continuous Integration is backed by several important principles and practices.
+
+The practices
+
+    Maintain a single source repository
+    Automate the build
+    Make your build self-testing
+    Every commit should build on an integration machine
+    Keep the build fast
+    Test in a clone of the production environment
+    Make it easy for anyone to get the latest executable version
+    Everyone can see what’s happening
+    Automate deployment
+
+Why Continuous Integration Is Important
+
+Continuous integration is important because it enables you and your team to avoid common development pitfalls. In addition, a continuous integration pipeline ensures that every change is integrated, tested and verified.
+
+Continuous Delivery
+---------------------------------
+
+
+Continuous delivery (CD) is an approach to software engineering based on producing software in short cycles. By developing in short cycles, teams can reliably release their software at any time. With CD, development teams can build, test, and release software faster and more frequently. 
+As a result, they can reduce the cost, time, and risk of delivering each change. 
+A repeatable deployment process is important for continuous delivery.
+
+
+
+Differentiating Continuous Delivery from Continuous Deployment
+
+Continuous Delivery is a framework that commences at the end of a Continuous Integration cycle. Continuous Delivery is all about deploying code changes to staging and then to production, post the build. It enables organizations to deploy code to production on an on-demand basis.
+
+Whereas, Continuous Deployment enables DevOps to automatically deploy changes to production. This accelerates the improvement process because developers can verify their code during production at the same hour. So, developers get the chance to test new features as the same code can be rolled back at the same speed that it was deployed into production.
+
+
+
+
+Types of CI Servers 
+===============
+    
+    Bamboo: Atlassian’s CI server isn’t open source, but the Java code is provided to customers for free. 
+	   It is also free for open source and community projects to use.
+    Buildbot: An open source offering - Brian Warner’s Python based CI tool.
+    
+    Continuum: An Apache build tool developed in Java.
+      
+    Go: ThoughtWorks' continuous delivery tool written in Java.
+    
+    Hudson: Java CI server now managed by the Eclipse Foundation.
+   
+    Jenkins: An open source tool written in Java. The project was forked from Hudson after a dispute with Oracle and is now led by CloudBees.
+   
+    Mojo: OpenMake’s free Java-based CI server.
+   
+    Pulse: Java-based CI server from Zutubi.
+   
+   TeamCity: Java-based CI server from JetBrains, makers of IntelliJ.
+
+    Team Foundation Server: Microsoft’s CI sever, widely used by .NET developers.
+
+    TravisCI: Hosted continuous integration service for the open source community.
+
+    Zed: Java-based CI Server from Hericus Software.
+

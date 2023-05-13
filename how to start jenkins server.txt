@@ -1,0 +1,16 @@
+
+1. Once the Jenkins installation has completed
+    
+      C:\Program Files\Jenkins
+
+2. copy jenkins.war
+
+3. create a folder with the name 'jenkins in the "C:\" drive 
+	eg:-'c:\jenkins' 
+
+4. copy the jenkins.war file into 'c:\jenkins' 
+
+
+5. open the command prompt and Start your jenkins server 
+        c:\jenkins>java -jar jenkins.war
+ 

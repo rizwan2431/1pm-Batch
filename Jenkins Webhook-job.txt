@@ -1,0 +1,70 @@
+
+Lets get understand what is meant by webhook ,
+
+-Webhooks allow you to build or set up integrations, such as GitHub Apps or OAuth Apps, which subscribe to certain events on GitHub.com. 
+-When one of those events is triggered, we'll send a HTTP POST payload to the webhook's configured URL. 
+-Webhooks can be installed on an organization, a specific repository, or a GitHub App. Once installed, the webhook will be sent each time one or more   subscribed events occurs.
+-Can create up to 20 webhooks for each event on each installation target (specific organization or specific repository).
+-When configuring a webhook, you can use the UI or API to choose which events will send you payloads. 
+-A webhook is an HTTP callback, an HTTP POST that occurs when something happens through a simple event-notification via HTTP POST.
+-GitHub webhooks in Jenkins are used to trigger the build whenever a developer commits something to the master/main branch.
+
+
+
+1. Freestyle project
+
+2. 
+https://dashboard.ngrok.com/get-started/setup
+trainings.anil@gmail.com
+xxxxxxxx
+
+3. download the ngrok software for windows10
+(ngrok allows you to expose a web server running on your local machine to the internet.
+If you don't know what port your web server is listening on, it's probably port 80, the default for HTTP.)
+
+Ngrok is a reverse proxy that allows traffic to be redirected from the generated url to wherever your local server is running.
+
+
+
+4. extract the ngrok folder and check the version
+
+C:\Users\India\Downloads\Programs>ngrok --version
+
+5. expose the http 8080 port in this path, which will point to our Jenkins server.
+	You will receive your proxy hostname after running that command 
+C:\Users\India\Downloads\Programs>ngrok http 8080
+
+Session Status                			online                                                                                              
+Session Expires               			1 hour, 59 minutes                                                                                  
+Version                       			2.3.35                                                                                              
+Region                       			United States (us)                                                                                  
+Web Interface                 			http://127.0.0.1:4040                                                                           
+ Forwarding                    			http://423a962afc1b.ngrok.io -> http://localhost:8080                   
+Forwarding                   			 https://423a962afc1b.ngrok.io -> http://localhost:8080                                                                                                                                                                                		
+Connections                   			ttl     opn     rt1     rt5     p50     p90                                                                                       							0       0       0.00    0.00    0.00    0.00       
+
+6. github repo
+
+	repos==>settings==>webhook
+	payload url
+	https://423a962afc1b.ngrok.io/github-webhook/     
+
+	https://38fb-103-105-101-100.ngrok.io/github-webhook/
+	
+	https://04c7-49-37-135-178.in.ngrok.io/github-webhook/
+
+(Note: Payload URL is the URL where our Jenkins is running add github-webhook to tell GitHub that it is a webhook.)                                                                                                                        
+Content Type: 
+	application/x-www-form-urlencoded
+
+ select radio button 
+	send me everything
+
+8. click on 'Add webhook' button.
+
+9. now make changes in the github repo , 
+   build the job in  Jenkins and now jenkins pull the code into the jenkinsjob.
+
+
+   
+

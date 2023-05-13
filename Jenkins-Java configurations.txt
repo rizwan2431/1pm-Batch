@@ -1,0 +1,99 @@
+Download JDK
+https://www.oracle.com/technetwork/java/jdk8-downloads-2133151.html
+
+edit the system environment variables
+    system variables
+         JAVA_HOME = C:\Program Files\Java\jdk1.8.0_131
+         JRE_HOME=C:\Program Files\Java\jre1.8.0_131
+        path = C:\Program Files\Java\jdk1.8.0_13\bin 
+
+
+
+
+First download the Jenkins.exe file
+
+1. https://jenkins.io/
+2. download the jenkins.war file
+	https://updates.jenkins-ci.org/download/war/
+	
+ 3. Install the jenkins.exe in some location in your hard drive
+
+
+Installation of jenkins on windows10 step by step
+
+https://phoenixnap.com/kb/install-jenkins-on-windows
+
+4.go to browser
+   http://localhost:8080
+5. need to unlock the admin
+	go to the specified folder where jenkins installed , under <secrets folder> admin password will be available
+6. copy that and paste it in browser and continue
+
+7. Install suggested plugins
+__________________________________
+if wanted to start jenkins server on desire port number
+command prompt, get into the .war file location
+
+c:\jenkins\java -jar jenkins.war --httpPort=8085
+
+To Restart jenkins 
+
+1. http://localhost:8080/restart
+
+2. go to services.msc and select jenkins and restart
+
+
+___________________________
+Jenkins on Tomcat
+
+Why? 
+Running Jenkins standalone (jetty/winstone) vs Running Jenkins on Tomcat 
+Pre-requisite 
+	***Tomcat 5 or above
+	*** ***java(7 or above) should be available
+	*** (https://www.youtube.com/watch?v=FqpmH...) 
+
+Step 1 : Download Tomcat 
+
+Step 2 : Unzip and place tomcat folder at any location 
+
+Step 3 : Copy/Place the jenkins.war file inside tomcat/webapps folder 
+
+Step 4 : Goto commandpromt (cmd) - windows | terminal - mac - 
+	goto tomcat/bin directory 
+	- make all files executable : chmod +x *.sh 
+	In case of windows this command will not work. This step might not be needed if you are on windows. Else you 	can right click on the file/folder goto security tab and change the permissions. 
+	
+	Can watch - 
+	TOMCAT - How to install and run on Windows | Change Port | Run app 
+	https://youtu.be/ZIIkrn6LHW0?list=PLh... 
+
+Step 5 : Start Tomcat : ./startup.sh 
+	(to shutdown tomcat : ./shutdown.sh) 
+
+Step 6 : verify if tomcat started : browser - http://localhost:8080 
+
+Step 7 : verify if jenkins is running on tomcat : http://localhost:8080/jenkins 
+
+*** To start jenkins (standalone) on a diff port
+
+*** java -jar jenkins.war - - httpPort=9090
+
+
+
+___________________________
+
+To change the default port number of jenkins
+
+   1. Open jenkins.xml file
+	C:\Program Files (x86)\Jenkins\jenkins.xml
+		change the port number in this file
+			--httpPort=8080
+
+
+-------------------------------------------------------
+To restart your jenkins server
+
+	http://localhost:8080/restart
+
+

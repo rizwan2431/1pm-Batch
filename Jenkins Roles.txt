@@ -1,0 +1,30 @@
+Start Jenkins Server from CLI
+
+1. Create New Users
+ManageJenkins->Manage Users>Create user
+
+2. Configure Users(optional)
+     go to right corner of username->dropdown and configure
+
+3. Create and Manage user roles
+    first we need to download "Role-based Authorization Strategy " download - restart jenkins
+ or ManageJenkins->manage plugins ->under "available section"->check for Role based Authorization Strategy"-> download and install-> Restart jenkins
+
+4. Manage Jenkins->Configure Global Security->Authorization->Role based Strategy
+     (need to make changes , only as admin user) 
+
+5. Login as Admin user and
+	ManageJenkins->Manage and Assign Roles ->Manage Roles-> create Global Roles and Project roles ->Save and apply
+
+6. ManageJenkins->Manage and Assign Roles->Assign Roles->Global roles (assign the users here)
+    ManageJenkins->Manage and Assign Roles->Assign Roles->itemroles (differenciate the type of users, "Developer can access only Devproject", "Tester can access only    Testing projects"
+
+7. Save and Apply
+
+8. Create a Sample Developer projects(note: bases on pattern for the projects selected "Dev.*)
+
+9. After creating the dev and testing projects logout as admin and login as users.
+    Based on the type of user, the relevant projects will be visible to him.
+
+(if you want to provide the specific naming pattern for Development and Testing projects as Dev.* and Test.*
+go to ManageJenkins->configure->check Restrict Project Naming

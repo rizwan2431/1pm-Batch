@@ -1,0 +1,25 @@
+
+Jenkins+Git+Maven
+Sample repo for practice
+
+https://github.com/cubeiplKumar/b7-MavenProject
+
+Note:
+
+1.Install the 'Maven Integration ' plugin in jenkins server before creating the maven job.
+2.Restart the Jenkins server (optional)
+3. New item-> maven project
+4. Configure
+	-GitHub Project =<github repo url>
+     SCM
+	- Git = https://github.com/cubeiplKumar/b7-MavenProject
+
+5. PostSteps(optional)
+
+	cd\ C:\Users\India\Desktop\MavenProject\
+	javac DisplayMonthOfYear.java
+	java DisplayMonthOfYear
+
+6. Save and Exit
+
+7. Build the MavenJob. Now it creates the jar file under the target folder in our workspace configured directory.

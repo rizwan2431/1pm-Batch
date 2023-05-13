@@ -1,0 +1,139 @@
+Jenkins Pipeline Process- Documentation
+______________
+Delivery Pipeline 
+
+ Pipeline is a group of events or jobs which are interlinked with one another in a sequence. In simple words, 
+ Jenkins Pipeline is a combination of plugins that support the integration and implementation of continuous delivery pipelines using Jenkins.
+
+	-A Continuous Delivery pipeline is a set of steps your code changes will go through to make their way to  production. 
+	-A Continuous Delivery pipeline delivers, as per requirements, quality products frequently and predictably from testingphase=>staging => production in an 		  automated fashion.
+
+2: Create 3 new jobs
+	2.1 BuildJob
+	2.2 Deploy Job
+	2.3 TestJob
+
+3:  Build the jobs individually and check the console output. 
+	-After that , need to trigger the job
+
+4:  To show the demo of the jobs builds, need to open three jobs in 3 different windows
+       - Add upstream /downstream jobs
+
+5: First configure SampleDeployJob,
+	Under the Build Triggers-> check/select Build after other projects are builld
+	  projects to watch = Buildjob
+
+	
+6: Like the above go to SampleTestJob
+	Under the Build Triggers-> check/select Build after other projects are builld
+	  projects to watch = DeployJob
+
+7: Now run the Samplebuildjob,once it is successfully builds check the 
+	other window "deployjob", it automatically builds once "buildjob" completed
+	same way "testjob" also builds once "deployjob" completed.
+_________________________________________________________________________________________
+
+1. Installing Delivery Jenkins Pipeline
+	-Other one is , ManageJenkins->Manage Plug-ins
+	-Download from internet and upload in jenkins(one method)
+	
+
+2: Add 
+	Delivery Pipeline View 
+	configure the view
+	-Go to dashboard and press "+" and select "Delivery Pipeline view" radio button
+	- give the view name in the box " TestDeliveryPipelineView"
+ Under Pipelines  ->Components
+	- Add components by giving intial job "samplebuildjob"
+	- once we apply, it displays the view of the pipeline
+	- if we are not build any jobs then this view will show empty values
+	- EditView->
+		-Number of pipeline instances per pipeline =3
+		- if select "Enable start of new pipeline build", then in pipeline view, "Buildjob" button is visible.(Save and check now)
+		- if select "Enable rebuild" then on every job, there is refresh button is visible, 
+		   so we  can rebuild the job if requires.(Save and check now)
+		- select 
+			"Show commit messages"
+			"Show total build time"
+		select the theme "contrast"
+		
+
+Step 4 Run and Validate
+
+__________________________________________________________
+how to setup build pipelines in jenkins?
+
+BUILD PIPELINE in Jenkins 
+
+1. As we have already created the following jobs
+	-BuildJob
+	-DeployJob
+	-TestJob
+	- These jobs are chained already
+
+2. Now, Install the "BuildPipeline Plugin" in jenkins
+     Manage Jenkins-> Manage Plugins->Available section-> search "Build Pipeline" , install and restart jenkins
+
+3. Now, Adding the Build Pipeline View and configure 
+	- Go to Dashboard and click on "+"
+	-  name="BuildPipelineTestView"
+     EditView/Configure
+	- Display Options<give any number>=3
+     	(with this you can able to view the last 3 builds of jenkins job)
+	- to view the console output in new window
+	Console Output Link Style= "New Window"
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

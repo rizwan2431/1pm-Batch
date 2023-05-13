@@ -1,0 +1,48 @@
+The format is as follows:
+
+MINUTE (0-59), HOUR (0-23), DAY (1-31), MONTH (1-12), DAY OF THE WEEK (0-6)
+ * * * * *
+
+    MINUTES Minutes in one hour (0-59)
+    HOURS Hours in one day (0-23)
+    DAYMONTH Day in a month (1-31)
+    MONTH Month in a year (1-12)
+    DAYWEEK Day of the week (0-7) where 0 and 7 are sunday
+
+If you want to schedule your build every 5 minutes, this will do the job : */5 * * * *
+
+If you want to schedule your build every day at 8h00, this will do the job : 0 8 * * *
+
+
+ Examples
+
+MINUTE (0-59), HOUR (0-23), DAY (1-31), MONTH (1-12), DAY OF THE WEEK (0-6)
+
+    Start build daily at 08:30 in the morning, Monday - Friday: 30 08 * * 1-5
+
+    Weekday daily build twice a day, at lunchtime 12:00 and midnight 00:00, Sunday to Thursday: 00 0,12 * * 0-4
+
+    Start build daily in the late afternoon between 4:00 p.m. - 4:59 p.m. or 16:00 -16:59 depending on the projects hash: H 16 * * 1-5
+
+    Start build at midnight: @midnight or start build at midnight, every Saturday: 59 23 * * 6
+
+    Every first of every month between 2:00 a.m. - 02:30 a.m.: H(0,30) 02 01 * *
+
+
+
+Example:-
+# If you want to run job for every fifteen minutes, we should specify cron syntax as below :
+H/15 * * * *
+H/5 * * * *
+H/30 * * * *
+
+#If you want to trigger for, every 2 hours
+H */2 * * * to distribute load evenly throughout the hour
+
+
+
+
+H H/2 * * *
+
+Poll SCM will occur at random minute every random intervals of 2 hrs.
+

@@ -1,0 +1,155 @@
+
+Topics to Covered in this class(saturday)
+
+1. Creating the Jenkins jobs
+    chain of jobs creation
+
+- Create a job samplejob1
+- Create a job samplejob2
+- Create a job samplejob3
+-Open samplejob2 -Configure- Build Triggers- check the "Build After other projects built"- under projects to list- provide the previous project "samplejob1"
+- in the same job( samplejob2) - Post build Actions- Projects to build- samplejob3- apply and save
+
+2. Now go to dashboard and build the Samplejob1, then it is automatically build the chain jobs samplejob2, samplejob3 
+
+___________________________________________________________________________________________
+Assigning Roles
+
+1. Create new users
+ - Manage jenkins- Manage Users- Create users
+ After creating the users, logout from admin and try to login with users credentials,which we have created.
+
+2.  Configure the users
+      Based on the type of users , jenkins should show the relevant projects to them
+      download and install the "Role Strategy Plugin".
+	user1 
+	user2
+
+3.  Manage jenkins - Configure Global Security- Authorization - select radio button "Role-Based Strategy"- Apply and save
+
+4. login as Admin 
+	Manage Jenkins- Manage and Assign Roles-click on ManageRoles
+	-Global Roles-Add the role "employee" -give overall read and view access to it.
+
+ -Under the project roles
+  - create roles "developer and Tester" and its relevant patterns.
+
+5. apply and save
+
+
+5.1 ManageJenkins-Manage and Assign Roles- Assign Roles
+5.2 Here apply the relevant roles user1 and user2
+	apply-save
+6. create Test.* and Dev.* patterns jobs and logout as admin
+
+7. login as Tester(user2) you can view only Testing projects in jenkins.
+8. Login as Developer(user1) can view only Developer projects
+_______________________________________________________________________
+
+Jenkins Integration with Git
+
+1. Create a java program and run it through command line
+
+   - complie and create a .class file in the project folder(javaproject)
+
+2. Creating the jenkins job to run the java project
+	under the build section 
+		cd /Users/India/Desktop/JavaProject
+		javac AutomationTools.java
+		java AutomationTools
+	-  Now build the project and check the output in console output
+3. Add your project to Git and github
+ -Open git console and go to your javaproject location(c:/users/india/desktop/javaproject/)
+  -add the files and push the files into master
+
+4. Coming to jenkins configuration
+    - Add the github repo url
+    - under PollSCM add the wild chars (to enable refresh every minute)
+    - apply and save
+    - now, try to add the new files in git console and push the changes into master
+   - open jenkins, now without your interaction, it automatically build the application.
+
+
+__________________________________________________________
+
+Automated Deployments with Jenkins 
+
+Start Jenkins 
+Step 2 Install Plugin (Deploy Plugin)
+	https://wiki.jenkins.io/display/JENKINS/Deploy+Plugin
+
+- ManageJenkins-ManagePlugins-search for "Deploy to Container Plugin"-install and restart the jenkins server
+
+3. Creating a Build Job in Jenkins
+	create a new job- AutomatedDeploymentTest-
+
+4. open browser and download any .war file like sample.war file
+
+   - Open the Homedirectory of jenkins
+       users/india/.jenkins/workspace/AutomatedDeploymentTest/<paste the sample.war >file 
+- In tomcat-users.xml add user for DEPLOYMENT user username="deployer" password="deployer" roles="manager-script" /
+
+5. Add Post-build Action Deploy war/ear to container (add values to the fields) 
+	-select the deploy war/ear to container
+	-select the tomcat container 
+	- provide the username and password of tomcat 
+	- apply and save 
+6. build now and check the console output
+
+7. open tomcat server(check the server is running)
+	http://localhost:9090/sample.war
+now you can see the jsp page
+
+____________________________________________________________________
+Jenkins GitHub Integration Maven Project
+
+1.  install the maven plugin "Maven Integration" in jenkins
+	ManageJenkins-Manage Plugins-select Maven Integration plugin
+
+2. Create on maven job 
+
+3. Pom.xml file is mandatory
+4.Configure the path of Maven installation folder (C:\apache-maven-3.5.2\bin)
+     managejenkins-Global Tool Configuration- Maven installations (C:\apache-maven-3.5.2\bin)
+
+   
+
+
+
+
+
+-		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

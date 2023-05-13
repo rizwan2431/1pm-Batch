@@ -1,0 +1,22 @@
+Jenkins Integration with Git
+
+1. Create a java program and run it through command line
+
+   - complie and create a .class file in the project folder(javaproject)
+
+2. Creating the jenkins job to run the java project
+	under the build section 
+		cd /Users/India/Desktop/JavaProject
+		javac AutomationTools.java
+		java AutomationTools
+	-  Now build the project and check the output in console output
+3. Add your project to Git and github
+ -Open git console and go to your javaproject location(c:/users/india/desktop/javaproject/)
+  -add the files and push the files into master
+
+4. Coming to jenkins configuration
+    - Add the github repo url
+    - under PollSCM add the wild chars (to enable refresh every minute)
+    - apply and save
+    - now, try to add the new files in git console and push the changes into master
+   - open jenkins, now without your interaction, it automatically build the application.
