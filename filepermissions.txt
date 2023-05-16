@@ -1,0 +1,46 @@
+Using Linux as your operating system allows you to easily provide access to many users simultaneously. However, that access also presents potential security risks. 
+
+Understanding the variety and types of Linux file permissions for users and groups will ensure that your system is optimally secure.
+To change directory permissions in Linux, use the following:
+
+    chmod +rwx filename to add permissions
+    chmod -rwx directoryname to remove permissions. 
+    chmod +x filename to allow executable permissions.
+    chmod -wx filename to take out write and executable permissions.
+
+Note that “r” is for read, “w” is for write, and “x” is for execute.
+
+
+
+
+
+There are three kinds of file permissions in Linux:
+
+    Read (r): Allows a user or group to view a file.
+    Write (w): Permits the user to write or modify a file or directory.
+    Execute (x): A user or grup with execute permissions can execute a file or view a directory.  
+
+
+
+
+
+
+	0  = No permission
+	1  = execute
+	2  = write
+	3  = write, execute
+	4  = read
+	5  = read, execute	
+	6  = read,write
+	7  = read,write,execute
+
+
+
+Access Modes are of three types:
+---------------------------------------------
+
+r = readonly
+
+w = write/edit/delete/append
+
+x = execute/run a command

@@ -1,0 +1,157 @@
+ hostname
+	 A hostname is a name which is given to a computer and it attached to the network. 
+                  Its main purpose is to uniquely identify over a network.
+
+#hostname
+
+to change the hostname
+[root@localhost ~]#hostname maverick
+[root@localhost ~]# sudo -i
+[root@maverick ~]# hostname -s ( for shorter hostname)
+
+[root@maverick ~]#hostname -f  (for FQDN name)
+
+
+
+
+
+
+Hidden files
+
+	to view the hidden files
+	[root@maverick ~]# ls -la
+
+	to make a file hidden file
+	[root@maverick ~]# mv <filename> .filename
+
+	[root@maverick ~]# mv testfile .testfile
+
+	to hide the directory
+	[root@maverick ~]# mv <directoryname>  .<directoryname>
+[	root@maverick ~]# mv testdir .testdir
+
+tail
+   -It is used to display the last 10 lines of the file
+#tail /etc/passwd
+
+
+head 
+-It is used to display the first 10 lines of the file
+#head /etc/passwd
+
+#head /etc/group
+
+To display the custom lines
+
+#tail -n /etc/passwd (Where n can be any number)
+ #tail -5 /etc/passwd
+
+#tail /etc/group
+
+Sort
+ - it is used to sort the output in numberic or alphabetic order
+#sort filename
+[root@localhost classroom]# cat > test
+Linux is freedom
+Welcome to my world of unix
+DataScience
+Automation
+RPA
+WebDesigning
+Photoshop CS
+
+[root@localhost classroom]# sort test
+Automation
+DataScience
+Linux is freedom
+Photoshop CS
+RPA
+WebDesigning
+Welcome to my world of unix
+
+To sort the data in reverse order
+[root@localhost batch52]# sort -r testdata.txt
+============================
+
+Wall command
+
+ send a messages to logged on users in a Linux server
+send a message to all or a specific logged on user, on the terminal in Linux.
+# wall "System will go down for 2 hours maintenance at 13:00 PM"
+
+[root@localhost classroom]# wall "system is shutdown for maintenance now"
+
+Note: if any logged in users in the other tabs then they will receive this messages
+==========================================================
+Date & Time Commands
+
+Check Current Time
+
+ #date
+
+use the same command to check a date 2 days ago
+[root@localhost clientnode]# date --date="2 days ago"
+
+
+timedatectl command
+
+Checking on the status of the time on your system as well as the present time settings, use the command timedatectl as shown
+
+# timedatectl
+
+Changing Time
+
+We use the timedatectl to change system time using the format HH:MM: SS. 
+HH stands for the hour in 24-hour format, MM stands for minutes and SS for seconds
+
+Setting the time to 09:08:07 use the command as follows (using the timedatectl)
+
+# timedatectl set-time 09:08:07
+
+List/Change time zone
+# timedatectl list-timezones
+
+Set TimeZone
+#timedatectl set-timezone Asia/Kolkata
+
+
+Create Multiple Directories
+
+mkdir -p DevOpsWorld/{India/{Hyd,Bangalore},AUS/{Sydney,Perth},USA/{Chicago,Dallas}}
+
+
+
+======================
+How to remove the directories
+
+
+rm -rf => Removes even non-empty file and directory
+
+
+rm -r => removes empty directories
+=================
+How to protect the directory from deleting accidentally?
+
+Make the file immutable with the i attribute.
+
+[root@ip-172-31-23-63 ec2-user]# chattr +i dir1
+
+[root@ip-172-31-23-63 ec2-user]# rm -rf dir1
+rm: cannot remove 'dir1': Operation not permitted
+
+now, to delete this directory then undo the protection with the following command
+
+[root@ip-172-31-23-63 ec2-user]# chattr -i dir1
+Now, directory will be delete
+
+[root@ip-172-31-23-63 ec2-user]# rm -rf dir1
+
+
+
+
+
+
+
+
+
+ 
