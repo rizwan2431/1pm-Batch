@@ -1,0 +1,115 @@
+ Ansible
+	
+	Ansible. An open-source product created by Red Hat,
+	Ansible is a popular platform used to automate repetitive IT processes and manage configurations across an IT infrastructure.
+	Ansible replaces time-consuming and error-prone manual processes for tasks like cloud provisioning, configuration management, and application 			deployment, making it a staple for today’s system administrators and DevOps professionals.
+	Ansible uses a push-based configuration that automatically sends pre-written configuration files (which Ansible calls playbooks) from the Ansible server 			 (host) to the target machine (the node).
+
+	Ansible is an open source IT configuration management and automation platform. 
+	It uses human-readable YAML templates so users can program repetitive tasks to happen automatically without having to learn an 					advanced programming language.
+	-Ansible is agentless, which means the nodes it manages do not require any software to be installed on them
+	-Ansible is a configuration management tool that is designed to automate controlling servers for administrators and operations teams. 
+               -With Ansible you can use a single central server to control and configure many different remote systems using SSH and Python as only               	  		requirements.
+	- It is simple IT automation engine that automates provisioning, configuration, application deployment,intra-service orchestration and many 	                   		  other IT needs.
+	-Ansible is an agentless automation tool that by default manages machines over the SSH protocol.
+	- Once installed, Ansible does not add a database, and there will be no daemons to start or keep running.
+
+
+Features
+	-Opensource
+	-Written in Python, so its easy to read.
+	-Easy installation and configuration
+	-Highly Scalable
+	-Agent less client configuration
+
+Requirements:
+	-SSH client
+	-Python(yaml)
+   	-Playbooks(yaml scripting)
+
+
+
+Is Ansible written in Python?
+
+Ansible itself is written in Python and has a fairly minimal learning curve. Ansible follows a simple setup procedure and does not depend on any additional software, servers or client daemons. It manages nodes over SSH and is parallel by default.
+
+What is the difference between Docker and Ansible?
+
+Ansible can manage full environments. With Ansible, you can manage not only the containers, but the environments around the containers. 
+Docker instances still need to run on hosts, and those hosts need to be launched, configured, networked, and coordinated, whether they be local machines or full cloud infrastructures.
+
+
+
+What is the use of Ansible in DevOps?
+
+Ansible is an open source IT Configuration Management, Deployment & Orchestration tool. 
+
+It aims to provide large productivity gains to a wide variety of automation challenges. 
+
+This tool is very simple to use yet powerful enough to automate complex multi-tier IT application environment
+
+
+Where we can use Ansible?
+
+Ansible is an open-source automation tool, or platform, used for IT tasks such as configuration management, application deployment, intraservice orchestration, and provisioning
+
+
+
+
+
+Is Ansible push or pull based?
+
+Even though Ansible is “Push” based (Agentless) we have found that we have the option of using `ansible-pull` that can run locally on each instance and pull the latest Ansible code from a remote repo during boot time
+
+
+What is Ansible architecture?
+
+Ansible architecture. Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.
+
+
+
+What port does Ansible use?
+Ansible change ssh port in playbook. In role de-servers-setup role the ssh port is changed from 22 to 8888, so when the last task is called it fails because it cannot connect to host through 22 port.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
