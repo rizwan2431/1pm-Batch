@@ -1,0 +1,45 @@
+POM stands for Project Object Model. It is fundamental unit of work in Maven. It is an XML file that resides in the base directory of the project as pom.xml.And has all the configuration settings for the project build.
+
+-pom.xml will always be located in the root directory of any maven project.
+-pom.xml basically contains the information related to the project which is built or to be built in. It contains all the necessary information about the  configuration details, dependencies included and plug-ins included in the project.
+
+-When executing a task or goal, Maven looks for the POM in the current directory. It reads the POM, gets the needed configuration information, then  executes the goal.
+
+-The pom. xml file contains information of project and configuration information for the maven to build the project such as dependencies, build  directory, source directory, test source directory, plugin, goals etc.
+
+
+Simplest pom.xml should have 4 important information.
+
+    modelVersion-4.0.0 (POM version for Maven 2 and is always required)
+    groupId —will identify your project uniquely across all projects, ex:ebs.obill.webs, com.companyname.project
+    artifactId — is the name of the jar without version(keeping in mind that it should be jar-name friendly)
+    version — if you distribute it then you can choose any typical version with numbers and dots (1.0, 1.1, 1.0.1, …)
+
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.webapp.hsbcapp</groupId>
+  <artifactId>hsbcapp</artifactId>
+  <version>2.0</version>
+</project>
+
+
+Maven Dependencies
+
+There is an element available for declaring dependencies in project pom.xml This is used to define the dependencies that will be used by the project
+Maven will look for these dependencies when executing in the local maven repository
+
+<dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.12</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+

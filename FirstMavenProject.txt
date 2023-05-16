@@ -1,0 +1,27 @@
+
+
+https://maven.apache.org/guides/introduction/introduction-to-archetypes.html
+
+
+1. create the maven project
+c:\users\india\mvnpractice\
+
+mvn archetype:generate  -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=qedgeclassroom -DartifactId=firstmavenproject -DinteractiveMode=false
+
+mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=rminds -DartifactId=maven-classroom -DinteractiveMode=false
+
+mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=KapilInfo -DartifactId=kitinfoapp -DinteractiveMode=false
+
+
+
+
+2. c:\users\india\mvnpractice\hello-world\mvn clean
+
+    mvn clean command will clean the project directory for any previous temporary build files. 
+    Since the project is all new, there will be no previous build files to delete. 
+    The command will thus succeed. 
+
+3. c:\users\india\mvnpractice\hello-world\ mvn package
+	mvn package command instructs Maven to run the package build phase which is part of the default build life cycle.
+	Maven creates a target subdirectory inside the project root directory. Inside the target directory you will find the finished JAR/war/ear file, 
+               as well as lots of temporary files (e.g. a classes directory containing all the compiled classes). 

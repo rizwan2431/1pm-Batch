@@ -1,0 +1,12 @@
+
+Advantage of Build Automation
+
+ The Advantages of build automation to software development
+      projects include.
+ 	. Eliminate redundant tasks
+ 	. Accelerate the compile and link processing
+	. Improve product quality
+ 	. Minimize "bad builds"
+	. Eliminate dependencies on key personnel.
+	. Have history of build and releases in order to investigate issues.
+	. Save time and money- because of the reasons listed above.

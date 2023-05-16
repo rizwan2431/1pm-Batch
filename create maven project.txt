@@ -1,0 +1,58 @@
+
+ it will create the folder structure
+c:\practice\mvn archetype:generate
+
+
+https://maven.apache.org/guides/introduction/introduction-to-archetypes.html
+
+
+
+1. open command prompt create one <projectfolder>
+	C:\mvnclassroom\mvn archetype:generate -DgroupId=QedgeTechno -DartifactId=SampleMavenProject -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+
+
+
+mvn archetype:generate -DgroupId=skyvtech -DarchtetypeArtifactId=maven-archetype-quickstart -DartifactId=vtechproject -DInteractiveMode=false
+
+mvn archetype:generate -DgroupId=Edutech -DarchetypeArtifactId=maven-archetype-quickstart -DartifactId=EdutechProject -DinteractiveMode=false
+
+
+
+mvn archetype:generate -DgroupId=CTS -DarchetypeArtifactId=maven-archetype-quickstart -DartifactId=ITAcademy -DInteractiveMode=false
+
+mvn archetype:generate -DgroupId=Infoweb -DarchetypeArtifactId=maven-archetype-j2ee-simple -DartifactId=pbwebapp -DinteractiveMode=false
+
+
+mvn archetype:generate -DgroupId=virtual-app -DarchetypeArtifactId=maven-archetype-webapp -DartifactId=webclassroom -DinteractiveMode=false
+
+
+groupId identifies your organization. 
+artifactId identifies the project.
+
+
+
+2. Once repository is created after the execution of the above command in .m2 folder
+	 Available location in your system= c:\users\india\.m2
+
+3  . Compile the command 
+       	C:\mvnclassroom\MavenHelloWorldProject>mvn compile
+
+4. After successful build
+     C:\mvnclassroom\MavenHelloWorldProject>mvn install
+     with this command it will run the junit test and generate the .jar files in your project folder
+
+5. Build & Test Project
+	Open the POM.xml file in your project folder
+	go the C:\mvnclassroom\MavenHelloWorldProject>  directory and execute the following mvn command.
+	 C:\mvnclassroom\MavenHelloWorldProject>mvn clean package
+	-with this command Maven will start building the project.
+
+6.  To check the output of the application
+	C:\mvnclassroom\MavenHelloWorldProject\target\classes>java <packagename>.<filename>
+	C:\mvnclassroom\MavenHelloWorldProject\target\classes>java infotech.App
+
+
+
+
+

@@ -1,0 +1,39 @@
+
+1. Prerequisites to install maven
+	- JDK & JRE should install and configure
+
+edit the system environment variables  system variables
+         JAVA_HOME = C:\Program Files\Java\jdk-11.0.16
+         
+        path = C:\Program Files\Java\jdk-11.0.16\bin
+
+download the java software from the below link
+
+https://drive.google.com/file/d/1xmyLLzHM6OFsilqZAujHGOeiJUGY7Jte/view?usp=share_link
+
+installation step by step on windows10
+https://phoenixnap.com/kb/install-java-windows
+
+
+2. Download Maven 
+	https://maven.apache.org/download.cgi
+
+3.After setup the environment variables 
+	EnvironmentVariables->user variables
+		M2_HOME=C:\apache-maven-3.6.1
+		MAVEN_HOME=C:\apache-maven-3.6.1
+	SystemVariables
+		PATH=C:\apache-maven-3.6.1\bin
+
+	- Open command prompt c:\mvn -version
+	(it displays the maven version, which indicates that maven install and configured)
+
+
+
+----------------------------------------------
+
+java oracle path in windows10
+
+
+C:\ProgramData\Oracle\Java\javapath
+
