@@ -1,0 +1,134 @@
+Merge Conflicts using Pull requests
+
+1. When we create Git repository in GIT hub we will get main/master branch by default
+2. To support parallel development we need to have branches in git repository
+
+3. Generally in realtime we will create several branches like below
+ 	main/master branch(default)
+	development
+	new feature branch
+	QA
+	UAT
+	release
+
+4. Whenever we need to work on new userstory/requirement, we are creating the 'newfeature' branch.
+	once development and testing has been completed , then merge the new changes(sourcecode) into main branch
+
+
+5. Create a new branch in github "feature-301'
+
+6. In local system,create a directory 'classroom', and open the gitbash in this directory
+	$ git clone -b feature-101 https://github.com/cubeiplKumar/jpstechno9pm-repo.git
+
+7. Get into the branch 
+	$ cd jpstechno9pm-repo/
+
+	- modifiy/make changes in  any file and save it
+	-$git status
+	-add that file to staging area
+		$git add --a
+8. commit the changes
+	$git commit -m "HSBC 101 changes"
+9. push the changes
+	$git push
+
+->once your development and unit testing is completed then you merge with main branch
+
+-> to merge changes from one branch to another brnch we will create 'pull request'
+
+-> When we execute pull request , Git hub compare source branch with target branch and it will confirm ,can we merge these changes or not.
+
+-> if the status' is 'Able to merge' then execute pull request and merge changes.
+->After pull request execution got completed, we can delete that new branch which we created for our story.
+
+(github repo)
+	-> open the 'feature-101' branch
+	-> click on compare and pull request
+	-> base:main  <- compare:feature-101 branch
+		->click on create pullrequest
+			-> merge pullrequest
+				
+- after merging into main branch delete the 'feature101 branch'
+=======================================
+RealtimeScenario
+
+1. Two developers are working on Sprint 7.3
+	Mahender and Vivek are the developers
+-->Mahender Working on HDFC-300 story
+-->Vivek working on HDFC-301 story
+Note:latest code is available in 'development' branch
+
+2.  Now create feature300 , & feature301 new branches from 'Development' branch (githubrepo)
+
+3. (local repo)
+	->mkdir 'Mahender'
+	->$ git clone -b feature300 https://github.com/cubeiplKumar/jpstechno9pm-repo.git
+	-> cd jpstechno9pm-repo/
+	->$git branch
+		
+	Get into the branch 
+	$ cd jpstechno9pm-repo/
+
+	- modifiy/make changes in  any file and save it
+		-$git status
+	-add that file to staging area
+		$git add --a
+	commit the changes
+		$git commit -m "HSBC 300 changes"
+	push the changes
+		$git push
+	
+(github repo)
+	-> open the 'feature-300' branch
+	-> click on compare and pull request
+	-> base:main  <- compare:feature-300 branch
+		->click on create pullrequest
+			-> merge pullrequest
+				
+- after merging into main branch delete the 'feature300 branch'
+- check in the 'develop' branch of the new changes ,which we create in 'feature300 branch'
+
+
+======================
+
+(local repo)
+	->mkdir 'Vivek'
+	->$ git clone -b feature301 https://github.com/cubeiplKumar/jpstechno9pm-repo.git
+	-> cd jpstechno9pm-repo/
+	->$git branch
+		
+	Get into the branch 
+	$ cd jpstechno9pm-repo/
+
+	- modifiy/make changes in  any file and save it
+		-$git status
+	-add that file to staging area
+		$git add --a
+	commit the changes
+		$git commit -m "HSBC 301 changes"
+	push the changes
+		$git push
+	
+(github repo)
+	-> open the 'feature-301' branch
+	-> click on compare and pull request
+	-> base:develop  <- compare:feature-301 branch
+		->click on create pullrequest
+			-> here, we get conflicts, because ont he same file, same line both developers were made changes. but even then we can create pull request.
+-> click on the 'ResolveConflicts'
+	-> remove the conflicts and merge it.
+	->now merge the pull the request 
+				
+- after merging into main branch delete the 'feature301 branch'
+- check in the 'develop' branch of the new changes ,which we create in 'feature301 branch'
+
+
+
+
+
+
+
+
+
+
+
