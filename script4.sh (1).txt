@@ -1,0 +1,13 @@
+#!/bin/bash
+#This is my first program in shellscripting
+#Author: Kumar
+#Module: Trainings
+#Date:25-Jul-2022
+
+
+date +%F
+timedatectl
+echo "Welcome to SHELL Scripting!!!!"
+hostname
+cal -j
+

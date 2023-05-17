@@ -1,0 +1,31 @@
+
+What is the use of shell scripting in DevOps?
+
+Shell Scripts are used in UNIX/LINUX OS to ease/automate your tasks/jobs.
+
+It’s the most efficient shell scripting language. It gives you the easiest way to automate things if you are already familiar with using a shell interactively. If you’re programming systems then you should know how the shell works anyway.
+
+To save yourself from making disasters and save your precious time. If you need to do certain jobs repetitively, create a script to simplify your jobs, this way it will be harder for you to accidentally make a mess. First you create a script and then you automate it. Learning shell script is a worthy investment. Just make sure you also create a good documentation out of it.
+
+
+Variables:
+
+	-Shell variables are created once they are assigned a value. 
+	-A variable can contain a number, a character or a string of characters.
+	-Variable name is case sensitive and can consist of a combination of letters and the underscore "_". 
+	-Value assignment is done using the "=" sign.
+ 	-Note that no space permitted on either side of = sign when initializing variables.
+
+eg: name="Qedge Technologies"
+      COURSE_FEE=$200
+
+      A backslash "\" is used to escape special character meaning
+
+
+
+What is the difference between while and for loop in shell script?
+difference between for loop and while loop is that in for loop the number of iterations to be done is already known and is used to obtain a certain result whereas in while loop the command runs until a certain condition is reached and the statement is proved to be false.
+
+
+
+

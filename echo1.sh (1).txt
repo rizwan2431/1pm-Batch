@@ -1,0 +1,17 @@
+#!/bin/bash
+#usage of echo command and its options
+
+
+echo "Welcome to ShellScripting"
+
+#echo -n "ShellScripting"
+
+
+
+#Calling the date command in between the string
+
+echo "Todays date is `date`"
+
+#to check the logged in user
+
+echo "Logged-in User is `whoami`"

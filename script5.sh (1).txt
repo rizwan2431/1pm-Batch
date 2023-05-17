@@ -1,0 +1,9 @@
+#!/bin/bash
+#A Sample Shellscript file
+
+
+hostname
+uname -a
+date
+echo "Welcome to ShellScripting!!!!"
+timedatectl

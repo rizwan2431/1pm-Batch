@@ -1,0 +1,32 @@
+#!/bin/bash
+#A script to declare and access an array variables
+
+
+
+#Declare an array variable individually
+
+course[0]="DevOps"
+course[1]="Jenkins"
+course[2]="Ansible"
+course[3]="Docker"
+course[4]="Kubernetes"
+#Access the variable
+echo "Access the array variables individually"
+
+echo 'echo ${course[0]}='${course[0]}
+echo 'echo ${course[1]}='${course[1]}
+echo 'echo ${course[2]}='${course[2]}
+echo 'echo ${course[3]}='${course[3]}
+echo 'echo ${course[4]}='${course[4]}
+
+
+#Access all values at a time
+echo "Access the array variables all at a time"
+
+echo 'echo ${course[@]}='${course[@]}
+
+#to get the array size
+
+echo "To get the ArraySize"
+
+echo 'echo ${#course[*]}='${#course[*]}

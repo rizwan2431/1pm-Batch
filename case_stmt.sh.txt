@@ -1,0 +1,13 @@
+#!/bin/bash
+#A script on using CASE statements
+
+
+read -p "Enter the OS:" osname
+
+#echo "Enter the OS:"
+#read osname
+
+case $osname in
+        linux) cat /etc/redhat-release ;;
+        unix) uname -a ;;
+esac

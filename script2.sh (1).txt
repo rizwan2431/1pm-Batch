@@ -1,0 +1,8 @@
+#!/bin/bash
+#Script to print the output and execute the commands using double quotes
+
+echo "Date command output is = `date`"
+
+# calling who am in command
+
+echo "Logged in as = `who am i`"

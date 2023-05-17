@@ -1,0 +1,10 @@
+#!/bin/bash
+#A script to read the file using while loop
+
+file=employees.txt
+#read command is passed with -r argument which ignores the escaping of characters
+
+while read -r line;
+do
+        echo $line
+done < "$file"
