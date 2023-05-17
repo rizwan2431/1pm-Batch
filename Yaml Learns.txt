@@ -1,0 +1,61 @@
+Ansible uses YAML syntax for expressing Ansible playbooks.
+
+ YAML stands for "YAML Ain't markup language" is a data serialization language which is intended to be human – friendly
+
+ YAML is case sensitive
+ 	-The files should have .yaml/.yml as the extension
+ 	-YAML does not allow the use of tabs while creating YAML files; spaces are allowed instead
+ 	-Every YAML file optionally starts with “---” and ends with “...”
+ 	-Ansible uses YAML because it is very easy for humans to understand, read and write when compared to other data  formats 
+	 like XML and JSON.
+ 	-YAML uses simple key-value pair to represent the data.
+
+ What is YAML used for?
+	- It is commonly used for configuration files and in applications where data is being stored or transmitted.
+	- yaml is a scripting lanaguage, means we can communicate with other languages using yaml.
+	- Other languages means, it may be OS, any applications or services running on OS
+
+
+For Ansible, nearly every YAML file starts with a list.
+
+Each item in the list is a list of key/value pairs, commonly called a “hash” or a “dictionary”. So, we need to know how to write lists and dictionaries in YAML.
+All YAML files (regardless of their association with Ansible or not) can optionally begin with --- and end with ... This is part of the YAML format and indicates the start and end of a document.
+
+
+DataTypes:
+------------
+1. There are different types of keys or data types, based on which type of data we are storing a key
+
+	my_integer: 50
+	employee  id: 123456 (key with space)
+	my_string: "yaml scripting"
+	my_string: yaml scripting
+ 	test float: 69.123
+	test boolean: true
+	null value: null
+
+      
+
+Playbook consists of following sections:
+
+1. Host declaration
+	- defines that on which server groups playbook should run based on the ansible inventory file
+2. Variable declaration(Optional)(vars)
+	- declaration of variable in playbook. 
+3. Action / Tasks Declaration
+	- every tasks should have a name which will show you in the output while running the playbook and also its easy 
+	  for us to identify it.
+	install httpd
+	update httpd
+4. become
+	- to tell ansible this playbook has to be executed with  elevated privileges
+5. become_user
+	- username , that we want to switch to the root or sudo user, need to be get executed the playbook in your host machines
+
+
+
+
+
+
+
+

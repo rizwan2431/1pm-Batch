@@ -1,0 +1,14 @@
+
+To check the playbook for syntax errors
+
+$ ansible-playbook <playbook.yml> --syntax-check
+
+
+To run any playbook use the following command
+
+$ ansible-playbook <playbook.yml>
+
+
+To view hosts list
+
+$ ansible-playbook <playbook.yml> --list-hosts

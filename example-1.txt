@@ -1,0 +1,40 @@
+Create the file on the target machines or servers as mentioned in the inventory file and the appservers group, save the below code with .yml extension and run the playbook.
+
+Steps 1:
+
+
+
+[ansible@ansibleserver ~]$ sudo vi createfile.yml
+
+---
+- hosts: appservers
+  become: true
+  become_user: root
+  tasks:
+  - name: Create a new file in the remote machine
+    file: path=/home/ansibleadm/app-info.txt state=touch
+
+
+
+Step-2:
+
+To check the playbook for syntax errors
+
+$ ansible-playbook <playbook.yml> --syntax-check
+
+[ansible@ansibleserver ~]$ ansible-playbook createfile.yml --syntax-check
+
+
+STep3:
+
+To run any playbook use the following command
+
+$ ansible-playbook <playbook.yml>
+
+[ansible@ansibleserver ~]$ ansible-playbook createfile.yml
+
+
+Step4:
+
+Step3: Now check in the node (192.168.152.129) 
+[ansible@localhost /]$ cd /home/ansible/

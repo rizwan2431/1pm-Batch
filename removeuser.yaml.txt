@@ -1,0 +1,11 @@
+Remove user. Removing a user is very easy and it will need the state to be set to absent. This is equivalent to the userdel command in Linux.
+
+
+
+
+---
+- hosts: appservers
+  become: true
+  tasks:
+  - name: Remove User from the node machine
+    user:   name=ramakrishna state=absent remove=yes force=yes

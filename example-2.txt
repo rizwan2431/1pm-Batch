@@ -1,0 +1,21 @@
+Create a directory with the mode as 775 and owner/group as Ansible.
+
+
+1. [ansible@ansibleserver ~]$ sudo vi createDirectory.yml
+---
+- hosts: all
+  become: true
+  become_user: root
+  tasks:
+  - name: Create directory in the node machines
+    file: path=/home/ansibleadm/JpsTechno state=directory mode=775 owner=ansibleadm group=ansibleadm
+
+2. check the syntax of the playbook
+	[ansible@ansibleserver ~]$ ansible-playbook createDirectory.yml --syntax-check
+
+3.Compile the playbook
+[ansible@ansibleserver ~]$ ansible-playbook createDirectory.yml
+
+4. Connect to the node (client) machine
+	file: path=/home/ansible/Qedge
+	check the path where 'Qedge' directory will be created.

@@ -1,0 +1,20 @@
+Create a user. Let’s look at the user module to create and delete users in the playbook.
+
+
+1.[ansible@ansibleserver ~]$ sudo vi createuser.yml
+
+
+---
+- hosts: appservers
+  become: true
+  become_user: root
+  tasks:
+  - name: Create User
+    user: name=Mahesh password=Mahesh groups=ansible shell=/bin/bash
+
+2.[ansible@ansibleserver ~]$ ansible-playbook createuser.yml
+
+3. connect to the node machine(192.168.25.148)
+
+[root@localhost ansible]# tail /etc/passwd
+	

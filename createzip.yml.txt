@@ -1,0 +1,21 @@
+
+
+Using the Ansible archive module you can compress files or folders to ‘zip’, ‘.gz’, or ‘bz2’ format.
+
+
+
+---
+- hosts: appservers
+  become: true
+  tasks:
+  - name: make a file into  zip file
+    archive:
+     path: /home/ansibleadm/classroom.txt
+     dest: /home/ansibleadm/classroom.zip
+     format: zip
+~
+~
+~
+~
+~
+~
