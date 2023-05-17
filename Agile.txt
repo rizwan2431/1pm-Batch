@@ -1,0 +1,30 @@
+Agile Software Development
+
+1.Agile means flexible and responsive. 
+  So, agile project management is a project management approach that is responsive to the needs of customers. 
+  The flexibility of agile helps in addressing specific issues in contemporary software development.
+
+2. The most prominent issues in this regard emerge in the form of falling behind schedule or exceeding the project budget. 
+   However, agile software development addresses noticeable setbacks that accompany conventional software development 
+   approaches. 
+   The conventional software development approaches include waterfall, iterative, or spiral project management approaches. 
+   These approaches need a comprehensive awareness of the application domain as well as the actual requirements of the client.
+
+3. On the other hand, the comprehensive awareness of specific application domain is very rare. 
+   Also, customers generally request for changes in the course of the development process. 
+   So, uncertainty and irreversibility are common traits in software development. 
+   Agile development tries to address these two issues with the facility of support for changes in the development process.
+
+4. Agile software development refers to  software development methodologies centered round the idea of iterative development, 
+   where requirements and solutions evolve through collaboration between self-organizing cross-functional teams. 
+   
+  The ultimate value in Agile development is that it enables teams to deliver value faster, with greater quality and 
+  predictablity, and greater aptitude torespond to change. Scrum and Kanban are two of the most widely used 
+  Agile methodologies
+  
+  
+  
+
+  
+  
+  
