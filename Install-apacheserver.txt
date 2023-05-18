@@ -1,0 +1,35 @@
+Installation of Apache(httpd) Server in remote machines
+============================================
+
+This playbook provides a step-by-step guide to install the Apache HTTP Server (httpd) on remote machines using Ansible. 
+
+Ansible is an open-source automation tool that simplifies the management and configuration of remote systems.
+
+Prerequisites:
+
+    Ansible installed on the control machine.
+    SSH access to the remote machines with appropriate credentials.
+
+Create a playbook file:
+
+    Create a new playbook file
+    Define the playbook structure and specify the required tasks.
+
+---
+- name: installation of apache server
+  hosts: appservers
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+     - name: Install httpd
+       yum:
+         name: httpd
+         state: present
+     - name: Start httpd service
+       service:
+         name: httpd
+         state: started
+         enabled: true
+
+
