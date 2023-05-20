@@ -1,0 +1,63 @@
+Ansible Role
+--------------
+Roles are a level of abstraction on top of tasks and playbooks that let you structure your Ansible configuration in a modular and reusable format.
+As you add more and more functionality and flexibility to your playbooks, they can become unwieldy and difficult to maintain. Roles allow you to break down a complex playbook into separate, smaller chunks that can be coordinated by a central entry point.
+
+Ansible is a handy configuration management tool as we have already looked here. It helps in configuring large number of the servers from one single controller instance. It helps automate complex tasks like configuration management, application deployment, creating CI/CD pipeline etc. Writing ansible code to manage the same service for multiple environments or different products increase code redundancy. With more complexity in functionality, it becomes difficult to manage everything in one ansible playbook file. Sharing code among teams become difficult. Ansible Role helps solve these problems. Ansible role is an independent component which allows reuse of common configuration steps. Ansible role has to be used within playbook. Ansible role is a set of tasks to configure a host to serve a certain purpose like configuring a service. Roles are defined using YAML files with a predefined directory structure.
+
+A role directory structure contains directories: defaults, vars, tasks, files, templates, meta, handlers. Each directory must contain a main.yml file which contains relevant content. Let’s look little closer to each directory.
+
+    defaults: contains default variables for the role. Variables in default have the lowest priority so they are easy to override.
+    vars: contains variables for the role. Variables in vars have higher priority than variables in defaults directory.
+    tasks: contains the main list of tasks or steps to be executed by the role.
+    files: contains files which we want to be copied to the remote host. We don’t need to specify a path of resources stored in this directory.
+    templates: contains file template which supports modifications from the role. We use the Jinja2 templating language for creating templates.
+    meta: contains metadata of role like an author, support platforms, dependencies.
+    handlers: contains handlers which can be invoked by “notify” directives and are associated with service.
+
+
+
+
+
+- Ansible Roles enable us to resusage and share Ansible code more efficiently.
+- Ansible role is an independent component which allows reuse of common configuration steps. 
+- Ansible role has to be used within playbook. 
+- Ansible role is a set of tasks to configure a host to serve a certain purpose like configuring a service. 
+- Roles are defined using YAML files with a predefined directory structure.
+- In Ansible, the role is the primary mechanism for breaking a playbook into multiple files. 
+  This simplifies writing  complex playbooks, and it makes them easier to reuse.
+- Place the group of playbooks in one file. It will help to reduce the code complexity and increase the code resuability.
+
+1. Ansible roles are consists of many playbooks,which is similar to modules in puppet and cookbooks in chef.  we call the same in ansible as roles.
+2. Roles are a way to group multiple tasks together into one container to do the automation in very effective manner  with clean directory structures.
+3. Roles are set of tasks and additional files for a certain role which allow you to break up the configurations.
+4. Resuse the code.
+5. can be easily modify and will reduce the syntax errors.
+
+
+Advantages of using Roles
+------------------------------
+	- Idea of include files and combine them to form clean,reusable abstractions
+	- Easy to maintain or trouble shooting the playbooks
+
+syntax-create-ansiblerole:
+====================
+
+ansible-galaxy init <your_role_name>
+
+ - init represents the initialize the role
+- ansible-galaxy  this command which is used to create the roles using the templates
+
+
+
+Structure of Roles:
+---------------------
+files:		contains regular files those needs to copied to the target hosts.
+handlers:		event handlers
+meta:		role dependencies
+templates:	similar to files, but it contains dynamic data.
+vars/group_vars	variables , definitions..
+		contains variables defined for the role.
+tasks		A list  of tasks to be executed by the ansible role. 
+		It is similar  to be considered as 'task' in the playbook.
+	
