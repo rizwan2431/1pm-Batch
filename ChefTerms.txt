@@ -1,0 +1,26 @@
+Cookbook is the basic building block of chef configuration management tool. 
+-A cookbook contains the complete set of resources required to configure an application or certain thing 
+  on a node(a node is a server that has chef agent running, which will pull configurations applicable from 
+  chef server). 
+
+-chef agent executes the resources on the node in the same order it is defined in the cookbook.
+
+
+Recipes:
+---------
+
+ It is the directory where most of us will be working. 
+ This directory holds all the steps that needs to be executed on the nodes to configure it the required way. 
+ By default there will be a default.rb file inside this directory, which can be used to define our resources.
+
+- Recipe is a collection of resources. Resources are nothing but Ruby code blocks that defines a particular step that   needs to happen on the node.
+
+syntax of a resource looks like the below..
+
+	type "name" do
+   		 attribute "value"
+    		action :type_of_action
+	end
+
+
+

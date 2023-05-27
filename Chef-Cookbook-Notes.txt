@@ -1,0 +1,124 @@
+
+Creating Chef Cookbook
+
+1. create a simple cookbook to install and configure an Apache web server.
+
+2.Log into your Chef workstation, go to your ~/chef-repo/cookbooks directory.
+	C:\chef-starter\chef-repo\cookbooks>
+
+3. Create the cookbook called “httpd“
+	C:\chef-starter\chef-repo\cookbooks>chef generate cookbook httpd
+
+4. Once cookbook is created and then checkin into that directory
+	
+	C:\chef-starter\chef-repo\cookbooks>cd httpd
+5. Recipe
+	A recipe consists of a series of resources which defines the state of a particular service or an application.
+	A recipe is not limited just to manage services
+	 it can also be used to execute the commands, user management, much more.
+	change the directory to recipes
+
+	C:\chef-starter\chef-repo\cookbooks\httpd>cd recipes
+
+	under recipes folder, we have "default.rb" use this file to add resources required for getting run the Apache server.
+
+6. Open the "default.rb" file and add the following code:
+	package 'httpd' do
+ 		 action :install
+	end 
+	
+	package	 	– Defines package resource
+	httpd		 - Name of the package which we are installing
+	action:install	 - action for the resource "package", i.e "httpd"
+	
+	When this recipe runs on the node the Chef will check whether the Apache is installed, if it is, it will skip this resource and go to the next resource. 
+
+
+
+7. Manage Apache Service
+
+	make the Apache service to start automatically at the system startup and also the service should be up and running.
+	add the following code into recipe i.e default.rb file
+
+	service 'httpd' do
+	     action [ :enable, :start ]
+	end
+
+
+8. Add the index.html
+	make directory name "files" under httpd directory
+	C:\chef-starter\chef-repo\cookbooks\httpd\>mkdir files
+       create index.html file
+	C:\chef-starter\chef-repo\cookbooks\httpd\files> 
+	index.html
+	  <add some html code in this file>
+
+	following to be added in default.rb file
+
+	cookbook_file "/var/www/html/index.html" do
+  		source "index.html"
+  	mode "0644"
+	end
+
+	cookbook_file – Resource to transfer files from a sub-directory of httpd/files to a mentioned path located on a chef node.
+	source – Specify the name of the source file. Files are normally found in COOK_BOOKS/files
+	mode – Sets the permissions for the file.
+
+9. Test the cookbook before upload it into chefserver
+	 C:\qedgeb10-chef-starter\chef-repo\cookbooks> cookstyle test httpd
+
+10. Once recipe is ready, then we need to upload your cookbook to chef server
+
+	C:\chef-starter\chef-repo\cookbooks> knife cookbook upload httpd
+
+	now check in the chef server, can display httpd under "Policy" tab
+
+11. To check the cook book list which is uploaded to chef server
+	C:\chef-starter\chef-repo\cookbooks>knife cookbook list
+
+12. Add the Cookbook to your node
+	
+	C:\chef-starter\chef-repo\cookbooks> knife node run_list add Node23 "recipe[httpd]"
+
+13.  Get into the your node machine(where chef-client is installed)
+	[root@localhost]#chef-client
+
+
+
+14. once index.html file is created then, upload cookbook to chef server
+	C:\chef-starter\chef-repo\cookbooks\httpd> knife cookbook upload httpd
+	
+	Add to your node
+		C:\chef-starter\chef-repo\cookbooks\httpd> knife node run_list add Node23 "recipe[httpd]"
+
+15. Once successfully uploaded, then login to your node
+	[root@localhost]# chef-client
+
+16. Open the browser
+	http://localhost/index.html
+	    or
+	http://192.168.235.128/index.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

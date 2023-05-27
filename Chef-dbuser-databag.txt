@@ -1,0 +1,304 @@
+
+Creating users in chef node
+
+Who is user?
+ 	-user is the one who can utilize the system resources(system resources like RAM, HDD and other )
+
+Target: Create a user in chefnode
+information need to create a user
+
+username: dbuser
+password: <encryptedpassword>
+groupname : <groupname>
+home: /home/<username>
+shell: /bin/bash
+____________________________
+========================================================================
+What is password structure ?
+	-it is divided into 3 layers of the following password structure
+	$encrypt_type$salt_name$actual_pass
+
+	Firstlayer = $encrypt_type
+	Second Layer =$salt_name
+	Third Layer=$actual_pass
+
+	$1$//JGtToA$MA68azyJjze2i32fMYK341
+	$encrypt_type=6 types of sha1
+		md5(encryption)=1
+		crc=2
+		sha256=5
+		sha512=6
+		$salt_name=$kgh556 (random unique number where system is generated)
+		$actual_pass=$8md5nvef985
+	
+
+MD5 is a type of algorithm that is known as a cryptographic hash algorithm. MD5 produces a hash value in a hexadecimal format. This competes with other designs where hash functions take in a certain piece of data, and change it to provide a key or value that can be used in place of the original value.
+
+==============================
+To see the encrypted password of users
+      [root@localhost~]# cat /etc/shadow | grep admin
+
+How to generate a encrypted password?
+  
+	syntax: openssl passwd -<type> -salt   <saltname>  <actual_passwd>
+	ex:[root@localhost~]# openssl passwd -1 -salt batman dbuser
+	
+
+Note: BATMAN (Benchmarking of Asymmetric Tools on Multiple Architectures, Non-Interactively) is a program to collect measurements of public-key systems.
+<saltname> 
+Password salting is a form of password encryption that involves appending a password to a given username and then hashing the new string of characters. This is usually done via an MD5 hashing algorithm. Password-salting is most commonly found within Linux operating systems, and it is generally considered a more secure password encryption model than any of the models used within the various Microsoft distributions.
+___________________________________________
+
+Create a Cookbook dbuser
+
+(Workstation)
+1. c:\chef-starter\chef-repo\cookbooks\chef generate cookbook dbuser
+
+(login to chefnode and create a encrypted password for the user)
+[root@localhost abclearn]# openssl passwd -1 -salt batman dbuser
+output:
+$1$batman$LojyXoiWCodvGjjfi2Td51
+
+Create the cookbook 
+
+ C:\chefclassroom\chef-starter\chef-repo\cookbooks> chef generate cookbook dbuser
+
+2. write a recipe to create a group and user is assigned to that group
+
+         c:\chef-starter\chef-repo\dbuser\recipes\vi default.rb
+
+	group 'dbGroup' do
+	  action :create
+	end
+	user 'dbuser' do
+	  password '$1$batman$LojyXoiWCodvGjjfi2Td51'
+	  group 'dbGroup' 
+	  shell '/bin/bash'
+	  home '/home/dbuser'
+	  manage_home true
+	  action :create
+	end
+
+'
+
+3. test the cookbook
+   $ C:\chefclassroom\chef-starter\chef-repo\cookbooks> cookstyle test dbuser  ( or) knife cookbook test dbuser    
+
+4. Upload the cookbook
+	 c:\chef-starter\chef-repo\cookbook\knife cookbook upload dbuser
+
+5.  create a json file "chefnodes.json"
+	 C:\chef-starter\chef-repo\cookbooks> vim chefnodes.json
+
+	{ 
+
+	  "name" : "chefnodes",
+	  "chef_environment" : "_default",
+	  "normal" : {
+		  "tags" : [
+
+		  ]
+	  },
+	  "policy_name" : null,
+	  "policy_group":null,
+	  "run_list": [
+		  "recipe[file_test]",
+		  "recipe[web_server]",
+		  "recipe[cron_test]",
+		  "recipe[attribute_test]",
+		  "recipe[template_test]",
+		   "recipe[dbuser]"
+		  
+	  ]
+	}
+[OR]	
+	Add the  cookbook to the the run_list
+
+	C:\chefclassroom\chef-starter\chef-repo\cookbooks> knife node edit KNITNode1
+		{
+		  "name": "KNITNode1",
+ 		 "chef_environment": "_default",
+ 		 "normal": {
+  		  "tags": [
+
+   		 ]
+  	},
+ 		 "policy_name": null,
+ 		 "policy_group": null,
+ 		 "run_list": [
+ 		 "role[webserver]",
+ 		 "recipe[httpd]",
+ 		 "recipe[cron_test]",
+  		"recipe[attribute_test]",
+  		"recipe[dbuser]"
+		]
+
+	}
+
+6.  Check the node list
+	$ C:\chef-starter\chef-repo\cookbooks>knife node list
+
+	Add the recipe to the node
+
+	 C:\chef-starter\chef-repo\cookbooks>knife node run_list add NewNode "recipe[dbuser]"
+
+	Upload the cookbook
+
+	 C:\chef-starter\chef-repo\cookbooks>knife cookbook upload dbuser
+
+7. Open the chef node and run the command   #chef-client
+
+	it will create a group and user with the name "dbuser"
+
+	you can login with 'chefUser1' and password '$1$batman$mTuVhgzD0tOuigO9tAMqT1'
+
+	To check the password of the particular user
+	$ cat /etc/shadow | grep dbuser
+
+
+Note:check the cookbooks information onthe  following path
+	/var/chef/cache
+Cookbook Steps:
+
+1. Create a Cookbook
+2. Write a Recipe
+3. Test a cookbook
+4. upload cookbook to Server
+5. update node run_list
+6. execute chef-client on the node
+============================================================
+
+Databag 
+----------
+
+Databags are used to maintain the system sensitive information like passwords
+  -databags are global variables
+ - it stores the data in JSON format
+ - it will always stored the information on the server only, not 
+    on the workstation and chef nodes
+ - it stored in index format for faster searching.
+
+Q) Why we need databags
+	To store the sensitive information like user password, private key
+
+Q) What are the steps to handle databags?
+	- Create an empty databag
+	-Write a JSON Format file and put some data
+	-Import the data from the file into databag.
+	- see the list of current databags.
+	- modify the recipe to collect data from databag.
+
+
+============================================================
+
+		-knife data bag list
+		- knife data bag create <databagname>
+		vi user01_password.json
+			{ 
+			  "id" : "dbuser",
+			 "password" : "$1$batman$LojyXoiWCodvGjjfi2Td51"
+
+			}
+
+		- knife data bag from file <databagname> file.json
+
+
+________________________________________________________________--
+1. Create the empty databag
+	C:\chefclassroom\chef-starter\chef-repo\cookbooks> knife data bag create dbuser_databag
+
+	
+	check the data bag list
+	$ C:\chef-starter\chef-repo\cookbooks\data_bags>knife data bag list
+
+
+2. To check the databags in the chef server
+	$C:\chef-starter\chef-repo\cookbooks>knife data bag list
+
+	
+	
+3. Create  json file to store the user information
+	$C:\chef-starter\chef-repo\cookbooks>vim dbuser_passwd.json
+		{ 
+			"id" : "dbuser",
+			"password" : "$1$batman$LojyXoiWCodvGjjfi2Td51"
+
+		}
+
+Note: to get the encrypted password, login to the linux and execute following command
+	[root@localhost abclearn]# openssl passwd -1 -salt batman dbuser
+	$1$batman$CGLyy8JIiEWKjuYTJEnsv1
+
+4. Export Databag, Attach the json file to the databag
+	$ C:\chef-starter\chef-repo\cookbooks>knife data bag list
+	
+	$C:\chef-starter\chef-repo\cookbooks>knife data bag from file dbuser_databag dbuser_passwd.json
+
+5. To show the content of the databag
+	C:\chef-starter\chef-repo\cookbooks>knife data bag show <databagname>
+	$ C:\chef-starter\chef-repo\cookbooks>knife data bag show dbuser_databag
+
+	(it displays the id of the databag)
+
+6. Now we need to maintain the version, to make few changes in recipes
+
+	C:\chef-starter\chef-repo\cookbooks>dbuser>vim metadata.rb
+		(in the file change the version from '0.1.0" to 0.2.0" save and exit)
+7. Now open the recipe file
+	C:\chef-starter\chef-repo\cookbooks\dbuser\recipes> vim default.rb
+
+		#
+	# Cookbook:: dbuser
+	# Recipe:: default
+	#
+	# Copyright:: 2018, The Authors, All Rights Reserved.
+	userpass=data_bag_item('dbuser_databag','dbuser')
+	group 'dbGroup' do
+		action :create
+	end
+
+	user 'dbuser' do
+		password userpass['password']
+		group 'dbGroup'
+		shell '/bin/bash'
+		home '/home/dbuser'
+		manage_home true
+		action :create
+	end
+
+(Note: userpass=data_bag_item('<databag_name>','<ID>')
+8. Upload the cookbook 
+	 C:\chef-starter\chef-repo\cookbooks\dbuser\recipes> knife cookbook upload dbuser
+
+9. Now login to chefnode and execute the command
+	#chef-client
+	
+	after successful compiling the cookbooks, open the following path and check the recipe file
+	#/var/chef/cache/cookbooks
+	the changes can reflect.
+
+	Check with users and group
+	# cat /etc/group
+	# cat /etc/passwd
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,68 @@
+
+Chef-Configuration Management Tool:
+---------------------------------------------------
+
+There's always a demand for deploying new services and software in an organization. And the deployment process may sound like a very tedious task, especially when it is a large organization, if it is manually done.
+
+
+Chef uses a pure-Ruby, domain-specific language (DSL) for writing system configurations
+
+
+What is Chef?
+
+Chef is a configuration management system designed to allow you to automate and control vast numbers of computers in an automated, reliable, and scalable manner.
+
+Chef is an automation tool that provides a way to define infrastructure as code. Infrastructure as code (IAC) simply means that managing infrastructure by writing code (Automating infrastructure) rather than using manual processes.
+
+Chef is an automation platform that configures and manages your network infrastructure. Chef transforms infrastructure into code. “Infrastructure into code” here means “deploy your code/application/configuration and policy” on many machines or instances automatically via your code.
+
+It can also be termed as programmable infrastructure. Chef uses a pure-Ruby, domain-specific language (DSL) for writing system configurations. Below are the types of automation done by Chef, irrespective of the size of infrastructure:
+
+    Infrastructure configuration
+    Application deployment 
+    Configurations are managed across your network
+
+- Nodes are dynamically updated with the configurations in the Server. 
+- With the help of "Pull method" Configuration which means that we don’t need to execute even a single command on the Chef server to push the configuration on the    nodes nodes will automatically update themselves with the configurations present
+
+
+Dimensions in Infrastructure:
+	1. Number of Servers
+	2. Volume of different configurations across the systems.
+	3. Number of people required to maintain those configurations. 
+
+Chef provided an automation solution flexible enough to bend to our scale dynamics without requiring us to change our workflow.
+
+----------------------
+
+Chef has three fundamental components:
+
+    Chef workstation is the location where users communicate with Chef. This is the development and testing environment for cookbooks and publishing them to Chef     server for production use. You can also configure the organizational policies such as roles and environments to separate the responsibilities.
+
+    Chef server is the center for configuration data. It stores our cookbooks, the policies about the nodes, and informations about the nodes that are being managed by     that server. Nodes communicate with Chef Server for configuration details.
+
+    Chef client node is the machine that are configured and managed by Chef Server. After configuring the Chef client on a node, it connects to Chef server to configure     itself to its desired state.
+
+
+-----------------------
+
+
+Workstations: simply personal computers where all development configuration code is created, tested, and changed before uploading to the Chef Server. Each Chef workstation also has a command line tool called “Knife”, which will be used to upload configuration changes to the Chef Server.
+
+Workstations are the place to write Recipes and Cookbooks:
+
+Recipes: A Recipe is a collection of resources that describes a particular configuration or policy. It describes everything that is required to configure part of a system and in which order it is to be used. The user writes Recipes that describe how Chef manages applications and utilities (such as Apache HTTP Server, MySQL, or Hadoop) and how they are to be configured.
+
+ Cookbooks: Multiple Recipes can be grouped together to form a Cookbook. A Cookbook defines a scenario and contains everything that is required to support that scenario. A Cookbook also includes attributes, libraries, metadata, and other files that are necessary for supporting each configuration. Cookbooks are created using Ruby language and Domain Specific languages are used for specific resources.
+
+Chef Server: The centralized store of our infrastructure’s configuration. The Chef server stores, manages and provides configuration to all nodes that make up the infrastructure.
+
+Nodes: are the servers where your code needs to run. Chef server manages Nodes by Chef client, which is a software installed on each Node. Chef client retrieving configuration information from the Chef Server. Nodes can be a cloud-based/virtual/physical server in your own data center.
+
+============
+Who uses Chef?
+Chef is used to streamline the task of configuring and maintaining a company's servers, and can integrate with cloud-based platforms such as Amazon EC2, Google Cloud Platform, Oracle Cloud, OpenStack, IBM Cloud, Microsoft Azure, and Rackspace to automatically provision and configure new machines.
+
+
+What is the difference between Chef and Ansible?
+What are the differences between Ansible and Chef? Ansible is an open-source IT automation tool, whereas Chef is a commercial automation tool. Ansible is used for configuration management and automation of application deployment. It is good for short commands like updating of RHEL / Linux operating systems.

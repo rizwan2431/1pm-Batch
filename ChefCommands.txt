@@ -1,0 +1,45 @@
+A node is any machine—physical, virtual, cloud, network device, etc.—that is under management by Chef.
+
+The knife node subcommand is used to manage the nodes that exist on a Chef server.
+
+1. To create argument to add a node to the Chef server. Node data is stored as JSON on the Chef server.
+	$ knife node create NODE_NAME
+	$ knife node create Node1
+
+2. To Delete Node from Chef-Server
+	$ knife node delete NODE_NAME
+	$ knife node delete Node23
+
+knife node delete --yes NODENAME
+ knife node delete --yes apacheNode1
+
+3. To Uninstall chef-client from centos7
+	$ rpm -qa *chef*
+	#yum remove chef*
+
+
+4.To delete cookbooks from chef server
+	in powershell
+ 	C:\chef13.8\chef-repo>  knife cookbook delete httpd
+
+4.1
+     To view the list of cookbooks from chef server
+	[root@chefworkstation chef-repo]# knife cookbook list
+
+5. To Delete cookbooks from chef-server
+
+	in powershell
+
+	C:\chef13.8\chef-repo>knife delete -r httpd
+	(this will delete the cookbooks from the chef server)
+
+6. To see the node list
+	 C:\chef-starter\chef-repo> knife node list
+
+7. To delete the data bag
+	C:\chefclassroom\chef-starter\chef-repo> knife data bag delete user01_passwd
+
+
+
+Command to delete the recipe from the run_list
+	C:\chefclassroom\chef-starter\chef-repo\cookbooks> knife node run_list remove Node10AMClassroom recipe[redhat_user]

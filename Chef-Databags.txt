@@ -1,0 +1,126 @@
+Databags
+-------------
+A data bag is a global variable that is stored as JSON data and is accessible from a Chef server. A data bag is indexed for searching and can be loaded by a recipe or accessed during a search.
+
+A data bag is a container for items that represent information about your infrastructure that is not tied to a single node. Data bags contain information that needs to be shared among more than one node
+
+    -Shared passwords
+    -License keys for software installations
+    -Shared lists of users and groups 
+
+Databags are used to maintain the system sensitive information like passwords
+  -databags are global variables
+ - it stores the data in JSON format
+ - it will always stored the information on the server only, not 
+    on the workstation and chef nodes
+ - it stored in index format for faster searching.
+
+Elements of Chef databags?
+
+    DATA BAG
+    DATA BAG ITEM
+    DATA BAG ITEM ELEMENTS
+
+
+Q) Why we need databags
+	To store the sensitive information like user password, private key.
+	Encrypted data bag items are a common way to store secrets - such as passwords or API keys - in a Chef infrastructure.
+	Data bags is very helpful when one does not wish to hardcode attributes in recipes nor to store attributes in cookbooks.
+
+Q) What are the steps to handle databags?
+	- Create an empty databag
+	- Write a JSON Format file and put some data
+	-Export the data from the file into databag.
+	- see the list of current databags.
+	- modify the recipe to collect data from databag.
+
+
+============================================================
+
+		-knife data bag list
+		- knife data bag create <databagname>
+		vi user01_password.json
+			{ 
+			  "id" : "user01",
+			 "password" : "$1$batman$254niefb"
+
+			}
+
+		- knife data bag from file <databagname> file.json
+
+
+________________________________________________________________--
+1. Create the empty databag
+		
+	C:\chefclassroom\chef-starter\chef-repo\cookbooks> knife data bag create <databagname>
+	C:\chefclassroom\chef-starter\chef-repo\cookbooks> knife data bag create bank_databag
+
+	
+2. To check the databags in the chef server
+	$C:\chef-starter\chef-repo\cookbooks>knife data bag list
+
+	
+	
+3. Create  json file to store the user information
+	$C:\chef-starter\chef-repo\cookbooks>vim bank_dbag_info.json
+		{ 
+			"id" : "devops_user1",
+			"password" : "<encrypted password>"
+
+		}
+
+Note: to get the encrypted password, login to the linux and execute following command
+	[root@localhost abclearn]# openssl passwd -1 -salt batman devops_user1
+	$1$batman$CGLyy8JIiEWKjuYTJEnsv1
+
+4. Export Databag, Attach the json file to the databag
+	$ C:\chef-starter\chef-repo\cookbooks>knife data bag list
+	
+	$C:\chef-starter\chef-repo\cookbooks>knife data bag from file bank_databag bank_dbag_info.json
+
+5. To show the content of the databag
+	$ C:\chef-starter\chef-repo\cookbooks>knife data bag show <databagname>
+	$ C:\chef-starter\chef-repo\cookbooks>knife data bag show bank_databag
+
+	(it displays the id of the databag)
+
+6. Now we need to maintain the version, to make few changes in recipes
+
+	C:\chef-starter\chef-repo\cookbooks>vim devops_user\metadata.rb
+		(in the file change the version from '0.1.0" to 0.2.0" save and exit)
+7. Now open the recipe file
+	C:\chef-starter\chef-repo\cookbooks\devops_user\recipes> vim default.rb
+
+		#
+	# Cookbook:: devops_user
+	# Recipe:: default
+	#
+	# Copyright:: 2018, The Authors, All Rights Reserved.
+	userpass=data_bag_item('bank_databag','devops_user')
+	group 'devops_group' do
+		action :create
+	end
+
+	user 'devops_user' do
+		password userpass['password']
+		group 'devops_group'
+		shell '/bin/bash'
+		home '/home/devops_user'
+		manage_home true
+		action :create
+	end
+
+(Note: userpass=data_bag_item('<databag_name>','<ID>')
+8. Upload the cookbook 
+	 C:\chef-starter\chef-repo\cookbooks\devops_user\recipes> knife cookbook upload devops_user
+
+9. Now login to chefnode and execute the command
+	#chef-client
+	
+	after successful compiling the cookbooks, open the following path and check the recipe file
+	#/var/chef/cache/cookbooks
+	the changes can reflect.
+
+	Check with users and group
+	# cat /etc/group
+	# cat /etc/passwd
