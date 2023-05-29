@@ -1,0 +1,96 @@
+Introduction to Vagrant 
+
+ What is Virtualization?
+	Virtualization allows multiple operating systems to simultaneously share processor resources in a safe and efficient manner.
+
+
+VirtualBox is an open source cross-platform virtualization software, it can be installed on any operating system and enable you to install and run multiple guest operating systems on same computer. For example, if you install it on your Linux system, you can run Windows XP operating system under it as a Guest OS or run Linux OS on your Windows system and so on. This way, you can install and run as many as guest operating systems as you like, the only limit is disk space and memory.
+
+ Vagrant
+-----------
+	Vagrant is a simpler way for Virtualization and Configuration Management. 
+	Virtualization and  Configuration Management are two big names in devops culture. 
+                  In this age of devops, a lot of automation is the key to success.
+
+	-Vagrant is a virtual machine manager which uses command line interface to do all the tasks
+	  on the machine.
+	-Vagrant is an application that helps in building consistent development environment with ease.
+	-Vagrant allows you to create portable work environments which can be easily reproduced on any system.
+	- It's useful for developers and system administrators who want to mimic a server's configuration on their local machine.
+
+	 In the backend, there is one Virtual Box utilized by the Vagrant tool to run virtual machines. A Vagrant box is just another term for virtual 	machines handled specifically by this utility. Vagrant supports Hyper-V,Docker, Oracle Virtual Box, and this tool can manage other machines 	like Amazon EC2, VMWare, etc., as well.
+
+ Why Vagrant?
+	 -A desire to use Linux on a non-linux host machine, such as Windows or OSX operating systems
+
+	 -A desire to improve consistency between developer environments and deployed servers
+
+	 -Well defined environments as configuraiton used to create the environments is in simple text files. 
+                    user can recreate as many Vagrant instances (VMs) using same Vagrant file.
+
+	 -Vagrant is capable of executing configuration management software like puppet/chef/ansible once the 
+                     base system is ready. This helps to setup the environment(Operating system+application) on the target machines
+                     in automated way.
+
+	 -Developer can create/destroy multiple development environments in minutes.
+
+==============================================
+
+
+
+Use case #1: Focusing on your task 
+
+As a developer, have you already spent too much time setting your environment?
+
+Vagrant makes it really easy to manage virtual boxes. An already all-in-one virtual machine with all the software and dependencies installed is a great way to make developers focused on their tasks. One just needs to create an optimal virtual box, once, and then it can be distributed to collaborators. No need for setting up the environment, as it should be already set up!
+
+In short, you just need to run the machine and focus on the task on hands.
+
+Use case #3: Distribution ⭐️
+
+Have you spent some time writing extensive documentation on how to do a setup of a project?
+
+Sometimes it can be frustrating, as there may be lots of aspects to take care: environment variables, software, and specific configurations. If you have the need for a pre-configured environment, this tool will help you.
+
+By packing everything you need on a virtual machine and distributing it, you have done work that others don’t need to (uselessly) replicate.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Everyone should use Vagrant. It simplifies a lot of things. No need to depend upon system administrator.
+
+    The world is changing and we must change with it. — Ragnar Lothbrok.
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
