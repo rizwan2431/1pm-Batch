@@ -1,0 +1,185 @@
+
+download the vagrant software
+https://www.vagrantup.com/downloads.html
+
+
+
+
+To install vagrant we need 3 things
+1. vagrant software
+2. Oracle Virtual Box
+    https://www.virtualbox.org/wiki/Downloads
+3. SSH(for ssh we can use putty but cmder also can be used )
+    http://cmder.net/
+
+   or
+https://cmder.en.softonic.com/
+
+Step1: Open vagrantup.com to download the software
+	https://www.vagrantup.com/downloads.html
+	-Download the relevant OS based software(vagrant)
+	-Download the VirtualBox software and install it
+	   https://www.virtualbox.org/wiki/Downloads
+	-Downlod the ssh ie cmder and install
+	http://cmder.net/
+
+Step2: After installation of vagrant s/w and cmder and virtual box
+
+Step3: click on cmder.exe file
+	To know the version of vagrant installation
+	- C:\Users\India
+		? vagrant -v
+
+
+
+Step4: create a folder ubuntu in the location c:\users\india\vagrant\ubuntu
+	-? cd C:\Users\India\Vagrant\ubuntu
+
+
+Step4.1: open browser and http://www.vagrantup.com-> findboxes-> click the ubuntu virtual box
+
+ or
+
+https://app.vagrantup.com/boxes/search
+
+Step5: go to commandline prompt
+	$users\india\vagrant\ubuntu\ vagrant box add ubuntu/trusty64
+(this is for first time..., if you want to login for the next time this command is not required)
+
+Step6: vagrant init ubuntu/trusty64
+ (this will create the vagrant file in the ubuntu folder)
+
+Step7: vagrant up , press enter
+
+STep8: vagrant ssh
+
+	Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 3.13.0-144-generic x86_64)
+
+ 	* Documentation:  https://help.ubuntu.com/
+
+ 	System information disabled due to load higher than 1.0
+
+  	Get cloud support with Ubuntu Advantage Cloud Guest:
+    	http://www.ubuntu.com/business/services/cloud
+
+	packages can be updated.
+ 	updates are security updates.
+
+	New release '16.04.4 LTS' available.
+	Run 'do-release-upgrade' to upgrade to it.
+
+    (OR)
+
+Step8.1 : vagrant ssh
+
+(Sometimes, ssh not connecting to your VM box so, manually we need to connect for that you need to follow the steps below)
+try the following command:
+C:\Users\India\Vagrant\ubuntu>vagrant ssh-config
+
+	Host default	
+	HostName 127.0.0.1
+  	User vagrant
+ 	 Port 2222
+  	man/dev/null
+  	StrictHostKeyChecking no
+  	PasswordAuthentication no
+ 	 IdentityFile C:/Users/India/Vagrant/ubuntu/.vagrant/machines/default/virtualbox/private_key
+  	IdentitiesOnly yes
+  	LogLevel FATAL
+
+Manually connect to the vm machine
+
+ssh vagrant@127.0.0.1 -p 2222 -i<copy the privatekey path> and press enter
+
+
+
+
+Step9: vagrant@vagrant-ubuntu-trusty-64:~$
+it means now you are in virutal box of ubuntu
+_______________________________________________________
+
+
+- Now you can install vagrant in virtual box of ubuntu
+Before that, first you need to login as a root
+
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo -i
+(with this command ubuntu machine login as root)
+
+-$sudo apt-get install git
+-
+
+
+1. To check the status of the machine go to the machine folder(i.e ubuntu)
+     	C:\Users\India\Vagrant\ubuntu>$vagrant status
+2. To stop the running machine
+	C:\Users\India\Vagrant\ubuntu>$ vagrant halt
+3. To destroy the machine
+	C:\Users\India\Vagrant\ubuntu>$ vagrant destroy
+
+
+
+if you click the oracle virtual box it, will ask the username/password
+vagrant/vagrant
+
+____________________________
+Vagrant commands
+1. vagrant status
+2. vagrant halt (to stop the virtual machine)
+3.vagrant suspend(to simply suspend the virtual machine)
+4. vagrant up
+5. vagrant ssh(to start the virtual machine)
+6. vagrant init
+7. vagrant global-status (it displays the how many vms are working)
+8. Vagrant box list
+__________________________________
+Usage: vagrant [options] <command> [<args>]
+
+    -v, --version                    Print the version and exit.
+    -h, --help                       Print this help.
+
+Common commands:
+     box             manages boxes: installation, removal, etc.
+     destroy         stops and deletes all traces of the vagrant machine
+     global-status   outputs status Vagrant environments for this user
+     halt            stops the vagrant machine
+     help            shows the help for a subcommand
+     init            initializes a new Vagrant environment by creating a Vagrantfile
+     login           log in to HashiCorp's Vagrant Cloud
+     package         packages a running vagrant environment into a box
+     plugin          manages plugins: install, uninstall, update, etc.
+     port            displays information about guest port mappings
+     powershell      connects to machine via powershell remoting
+     provision       provisions the vagrant machine
+     push            deploys code in this environment to a configured destination
+     rdp             connects to machine via RDP
+     reload          restarts vagrant machine, loads new Vagrantfile configuration
+     resume          resume a suspended vagrant machine
+     snapshot        manages snapshots: saving, restoring, etc.
+     ssh             connects to machine via SSH
+     ssh-config      outputs OpenSSH valid configuration to connect to the machine
+     status          outputs status of the vagrant machine
+     suspend         suspends the machine
+     up              starts and provisions the vagrant environment
+     validate        validates the Vagrantfile
+     version         prints current and latest Vagrant version
+
+For help on any individual command run `vagrant COMMAND -h`
+
+Additional subcommands are available, but are either more advanced
+or not commonly used. To see all subcommands, run the command
+`vagrant list-commands`.
+_____________________________________________________________________
+
+
+if we are not happy with the boxes we found in hashcorp website.
+we can find vm boxes in other site,
+http://www.vagrantbox.es/
+
+
+
+
+
+
+
+
+

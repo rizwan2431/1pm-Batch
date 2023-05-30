@@ -1,0 +1,8 @@
+Command				Purpose
+
+ vagrant box add ORG/BUILD			Add a new virtual machine
+ vagrant init ORG/BUILD			Initialize virtual machine
+ vagrant up				Start up virtual machine
+ vagrant reload				Restart virtual machine
+ vagrant halt				Shutdonw virtual machine
+ vagrant ssh				SSH into the virtual machine
