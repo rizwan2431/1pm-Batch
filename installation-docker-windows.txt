@@ -1,0 +1,63 @@
+
+
+Installation of Docker on Windows
+
+1.Download the docker toolbox from the url
+	https://docs.docker.com/toolbox/toolbox_install_windows/
+
+	or
+	https://github.com/docker/toolbox/releases
+
+2. Once you install you will get the three icons on your desktop
+	a) Docker Quick Start
+	b) Kitematic
+	c) Oracle Virtual Box
+
+3.  Toolbox  Consisting of
+	1. Docker Engine
+	2. Compose
+	3. Machine
+	4. Kitematic
+4. Open the docker quick start terminal
+	with this it will create the docker service where you can work with docker commands, images , docker files
+
+5. Open Virtual VM box(optional)
+
+6. Already open docker quick start terminal
+
+	$docker --version
+	$docker ps
+	$docker info
+	
+	info - It is used to ensure that the Docker command returns the detailed information on the Docker service  installed.
+
+Step7: Login to docker hub with your login credentials
+	https://hub.docker.com/
+	7.1  to Search the images
+		$ docker search ubuntu
+	7.2 Once it searches done, it displays the list of images
+		$ docker pull ubuntu
+	
+
+Step8: $docker images (it list the available images in your docker)
+
+step9:   To pull the image from the docker hub
+	$docker pull <imagename>
+	$docker pull jenkins
+
+Step10: To run the image
+	$docker run -it <imagename>
+	to run the jenkins
+	$docker run -p 8080:8080 --name=jenkins-master jenkins
+
+	
+Step11: Open the browser and 
+	http://localhost:8080
+	
+
+
+==========================================================
+
+
+	
+ 

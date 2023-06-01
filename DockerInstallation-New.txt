@@ -1,0 +1,8 @@
+
+Download the software from the 
+https://get.docker.com/
+
+for windows
+download from the following url
+
+https://github.com/docker/toolbox/releases
