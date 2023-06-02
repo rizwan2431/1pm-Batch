@@ -1,0 +1,67 @@
+Dockerfile is a text file that contains list of commands that are used to build a docker image automatically. 
+ Basically a docker file acts as set of instructions that are needed to build a docker image.
+ 
+- It describes step-by-step instructions of all the commands you need to run to assemble a Docker Image.
+
+- The docker build command processes this file generating a Docker Image in your Local Image Cache, 
+   which you can then start-up using the docker run command, or push to a permanent Image Repository(dockerhub) 
+
+ Dockerfile usually starts from a base image. As defined in the Docker documentation, 
+  a base image or parent image is where your image is based. It’s your starting point. 
+  It could be an Ubuntu OS, Redhat, MySQL..etc...
+
+Docker file is a text file which defines a Docker images.
+  - We can create our own customized Docker image.
+  - writing a Dockerfile is a more consistent and repeatable way to build your own images
+  - simple set of commands that you need to use in your Dockerfile.
+  - There are several commands supported like FROM, CMD, ENTRYPOINT, VOLUME, ENV and more. 
+
+dockerfile terminologies
+===============
+
+ FROM
+     -Select the base image to build the new image on top of 
+      Every dockerfile must start with the FROM instruction.
+	FROM ubuntu:latest
+
+CMD
+     This is the command that will run when the Container starts.
+     	CMD ["nginx", "-g", "daemon off;"]
+
+
+
+MAINTAINER 
+   -command tells who is the author of the generated images. 
+   -Optional field to let you identify yourself as the maintainer of this image. 
+     This is just a label (it used to be a dedicated Docker directive).
+
+   	 MAINTAINER anilkumar (trainings.anil@gmail.com)
+
+
+RUN
+      - Specify commands to make changes to your Image and subsequently the Containers started from this Image.
+      - This includes updating packages, installing software, adding users, creating an initial database, 
+         setting up certificates, etc. 
+      - These are the commands you would run at the command line to install and configure your application. 
+      - This is one of the most important dockerfile directives.
+      - A RUN instruction is used to execute any commands. 
+
+             RUN apt-get update && apt-get upgrade -y && apt-get install -y nginx && rm -rf /var/lib/apt/lists/*
+
+ENTRYPOINT
+    -Sets the default application used every time a Container is created from the Image. 
+    -is then running the 'nginx' executable
+      ed: CMD "Hello Docker"
+             ENTRYPOINT echo
+
+EXPOSE 
+     - Define which Container ports to expose 
+     - command here to inform what port the container will be listening on.
+	EXPOSE 80
+
+ENV
+     Set/modify the environment variables within Containers created from the Image. 
+	ENV var_home="/var/etc/"
+	ENV JAVA_HOME="/jdk/jdk_11.0/"
+
+

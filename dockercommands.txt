@@ -1,0 +1,220 @@
+
+1.To display the imageid
+
+	$docker images -q
+
+
+2. To show only running containers use the given command:
+
+	$docker ps
+	ps = process status
+
+3.To show all containers use the given command:
+
+	$docker ps -a
+
+4.To show the latest created container (includes all states) use the given command:
+
+	$docker ps -l
+
+5.To show n last created containers (includes all states) use the given command:
+
+	$docker ps -n=1
+
+6. To display total file sizes use the given command:
+
+	$docker ps -s
+
+7.In The New Version Of Docker, Commands Are Update, Some Management Commands Are Added:
+Is Used to list all the running containers.
+	$docker container ls
+
+8.Is Used to list all the containers including all states
+
+	$docker container ls -a
+
+9. To See only the last container that was started
+	$ docker ps -l
+
+10. To see only the ids of containers
+	$ docker ps -q
+
+11. View the logs of the containers
+	$ docker logs <containerid>
+
+12.To kill our container
+	$docker kill <containerid>
+
+13. now if we check that our container doesn't show up anymore:
+	$docker ps
+
+
+14.To list all running containers (just stating the obvious and also example use of -f filtering option)
+
+	$ docker ps -a -f status=running
+    to display the containers which is exited recently
+	$docker ps -a -f status=exited
+
+15.To list all running and stopped containers, showing only their container id
+
+	$docker ps -aq
+
+16.To remove all containers that are NOT running
+
+	$docker rm `docker ps -aq -f status=exited`
+
+17. To see the help of the individual commands
+	$docker run --help
+	it displays the options for the 'run' command.
+
+___________________________________--
+
+To Stop the Containers
+
+$docker container stop <containerid>
+
+_______________________________________________
+to install sudo
+#apt-get install sudo
+
+to install curl
+#apt-get install curl
+
+to check the ubuntu version
+ 
+apt-get install lsb-release
+lsb_release -a
+
+
+______________________________________________________________________________________________
+
+$sudo apt-get install apt-transport-https ca-certificates
+$ sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+
+$sudo vi /etc/apt/sources.list.d/docker.list
+
+dev https://apt.dockerprojecct.org/repo ubuntu-wily main
+
+$sudo apt-get update
+
+__________________--
+to remove the container
+first we need to stop the container
+
+$docker stop <containerid>
+
+To Remove the container
+$docker rm <containerid>
+
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+
+___________________________________________-
+
+sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+
+
+
+$sudo vi /etc/apt/sources.list.d/docker.list
+
+open the file and save the following content
+
+deb https://apt.dockerproject.org/repo ubuntu-wily main
+
+$sudo apt-get update
+
+$sudo apt-get install docker-engine
+________________________________________________________________________________________
+(https://zaiste.net/removing_docker_containers/)
+List all exited containers
+
+	$docker ps -aq -f status=exited
+
+Remove Stopped Containers
+
+	$docker ps -aq --no-trunc -f status=exited | xargs docker rm
+
+This command will not remove running containers, only an error message will be printed out for each of them.
+
+============================================================================================
+## List Docker CLI commands
+docker
+docker container --help
+
+## Display Docker version and info
+docker --version
+docker version
+docker info
+
+## Execute Docker image
+docker run hello-world
+
+## List Docker images
+docker image ls
+
+## List Docker containers (running, all, all in quiet mode)
+docker container ls
+docker container ls --all
+docker container ls -aq
+
+To Launch the container
+	 $docker run -it ubuntu:latest /bin/bash
+
+To check the os
+	root@a4bf380c3ffc:/# cat /etc/*release
+To check what processes are currently running:
+	root@a4bf380c3ffc:/#top
+
+Getting out of a container without stopping it
+
+	"Ctrl + P + Q" will do the trick:
+
+to get back to our container again via "attach". To do that, we need to know the "CONTAINER ID":
+$docker attach <containerid>
+$ docker attach a4bf380c3ffc
+
+stop the container and get out of it via "Ctrl + D":
+If we issue "docker ps" command again, we see the container is not running anymore:
+   $docker ps -a
+Again if you want to start the same container
+
+$docker start <containerid>
+$docker start a4bf380c3ffc
+
+==============================================
+
+to see all the images 
+# docker images -a
+
+To remove the images with force
+# docker rmi --force <imageid/imagename>
+
+
+
+
+=================================================================
+
+Removing the Docker Images
+
+	$docker rmi <imageid>
+	$docker rmi  e56f91b45161
+
+Forcibly remove the image
+
+	$docker rmi -f <imageid>
+	$docker rmi -f e56f91b45161
+
+--------------------------------------------------------------------------------------
+to know detail information about the image
+
+# docker inspect <imageid>
+========================
+
+to change the hostname of the container
+
+$docker run -ti --name "container1" --hostname "mavrick.com" ubuntu /bin/bash
+
+
+
+

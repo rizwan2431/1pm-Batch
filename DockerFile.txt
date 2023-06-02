@@ -1,0 +1,74 @@
+we shall take a look at how to build our own Docker images .
+writing a Dockerfile is a more consistent and repeatable way to build your own images.
+A Dockerfile is a text file that has a series of instructions on how to build your image. 
+
+It supports a simple set of commands that you need to use in your Dockerfile.
+
+There are several commands supported like FROM, CMD, ENTRYPOINT, VOLUME, ENV and more
+
+1. create a folder named images as shown below. This will be our root folder where we will create our Dockerfile.
+	India@LAPTOP-VODHAM22 MINGW64 ~/docker-classroom
+	$ mkdir images
+	then navigate into that directory via cd images.
+	$ cd images
+2.India@LAPTOP-VODHAM22 MINGW64 ~/docker-classroom/images
+	$vi dockerfile
+	   
+	FROM busybox:latest
+	MAINTAINER AnilKumarM (trainings.anil@gmail.com)
+
+3.  India@LAPTOP-VODHAM22 MINGW64 ~/docker-classroom/images
+	$docker build -t myimage:latest .
+	
+	Now check in our docker images
+	$docker images
+
+4.  To launch a container
+	$docker run -it myimage
+
+5. modify the Dockerfile with a new instruction CMD as shown below:
+
+	FROM busybox:latest
+	MAINTAINER AnilKumar M(trainings.anil@domain.com)
+	CMD ["date"]     
+
+6.  Build the image again and run the image and launch the container
+	India@LAPTOP-VODHAM22 MINGW64 ~/docker-classroom/images
+	$docker build -t myimage:latest .
+	
+	$ docker run -it myimage
+	 output:Mon Oct  8 19:06:20 UTC 2018
+
+7.Now when you build the image and run a container
+	$ docker run -it myimage
+
+8. Now , modify the docker file to install the nginx server 
+
+	$vi dockerfile
+		FROM ubuntu
+		MAINTAINER AnilKumar (trainings.anil@gmail.com)
+		RUN apt-get update
+		RUN apt-get install -y nginx
+		ENTRYPOINT [“/usr/sbin/nginx”,”-g”,”daemon off;”]
+		EXPOSE 80
+
+9.  build the image and run the container
+	$docker run -d -p 80:80 --name webserver myimage
+
+10. it will have nginx started on port 80. And if you visit the page via the host IP,
+	Open the browser and localhost:80
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
