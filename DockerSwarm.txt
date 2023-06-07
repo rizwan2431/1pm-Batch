@@ -1,0 +1,229 @@
+DockerSwarm
+----------------
+A swarm consists of multiple Docker hosts which run in swarm mode.
+A swarm is a cluster of one or more computers running Docker.
+Docker swarm is a container orchestration tool, meaning that it allows the user to manage multiple containers deployed across multiple host machines.
+
+
+A swarm is a group of machines that are running Docker and joined into a cluster 
+Docker Swarm is a tool for Container Orchestration
+
+Let’s take an example
+You have 100 containers
+You need to do 
+- Health check on every container
+- Ensure all containers are up on every system
+- Scaling the containers up or down depending on the load
+- Adding updates/changes to all the containers
+
+Orchestration - managing and controlling multiple docker containers as a single service
+Tools available - Docker Swarm, Kubernetes, Apache Mesos
+
+
+====================================
+
+  1. check the docker machine is installed in our system
+	India@LAPTOP-VODHAM22 MINGW64 ~
+	$ docker-machine -v
+
+2. Pre-requisites
+	1. Docker 1.13 or higher
+	2. Docker Machine (pre installed for Docker for Windows and Docker for Linux or Mac)
+
+ 	Installation of docker machine
+	https://docs.docker.com/machine/install-machine/#installing-machine-directly
+
+	deploy the docker swarm
+	https://docs.docker.com/get-started/swarm-deploy/
+
+
+ Creating the docker swarm machines 
+
+ 1. To create the docker swarm machines (Manager)
+
+     create one directory (dmachines) in the location
+
+	India@LAPTOP-VODHAM22 MINGW64 ~/dmachines
+	$ docker-machine create --driver virtualbox manager1
+
+to check the environment your manager1 machine is running
+
+	India@LAPTOP-VODHAM22 MINGW64 ~/dmachines
+	$ docker-machine env manager1
+
+
+2. Check the successfull installation of your machines 
+$ docker-machine ls
+NAME       ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER     ERRORS
+default    *        virtualbox   Running   tcp://192.168.99.100:2376           v19.03.5
+manager1   -        virtualbox   Running   tcp://192.168.99.101:2376           v19.03.5
+
+
+  to check the docker machine manager1 ip
+  $ docker-machine ip manager1                                                                                                                   
+      192.168.99.101
+
+3. Need to create the other machines which are running under manager1
+	-open the other docker terminal window and create the machine 'worker1'
+	$docker-machine create --driver virtualbox worker1
+
+      create another worker machine
+	$docker-machine create --driver virtualbox worker2
+
+         ( Note:boot2docker is a lightweight Linux distribution based on Tiny Core 
+            Linux made specifically to run Docker containers)
+	-with this one we can identify that we are inside of our respective machines
+	-Need to connect to your manager1 machine
+	 SSH (connect) to docker machine
+    	$ docker-machine ssh manager1
+
+	Similarly, need to create nodes/machines for the worker1, worker2
+	open an new terminal
+	$docker-machine ssh worker1
+	open a new terminal
+	$docker-machine ssh worker2
+
+4. We need to initialize the docker swarm, in manager1 (machine)
+
+      after getting the ip addr of your manager1
+       execute the following command
+   (with this command now manager1 will become swarm manager machine)
+
+ docker@manager1:~$ docker swarm init --advertise-addr 192.168.99.101
+		    docker swarm init --advertise-addr 192.168.99.141
+		
+ Swarm initialized: current node (o7u9ks20gdsz5o5bddn5eev1l) is now a manager.
+  To add a worker to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-24xg0jg7ai8mxieirkpl1p3gbmj0ldvbd6oa5837cvedsduerc-   24u5whltynx9owqb6foifyv8e 192.168.99.101:2377
+
+   To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+
+------
+    to check the list of managers in the docker swarm
+	docker@manager1:~$ docker node ls
+    
+     -'docker node ls' command will execute only in swarm manager machine only, it will not work in the       worker/slave nodes
+
+5. to join the worker nodes under the manager machine
+	docker@manager1:~$ docker swarm join-token worker
+	To add a worker to this swarm, run the following command:
+                docker swarm join --token SWMTKN-1-24xg0jg7ai8mxieirkpl1p3gbmj0ldvbd6oa5837cvedsduerc-24u5whltynx9owqb6foifyv8e 192.168.99.101:2377
+
+   6. copy the 'docker swarm join ' command and paste into your worker node machines
+             (open the window of worker1 terminal)
+	docker@worker1:~$docker swarm join --token SWMTKN-1-24xg0jg7ai8mxieirkpl1p3gbmj0ldvbd6oa5837cvedsduerc-24u5whltynx9owqb6foifyv8e 192.168.99.101:2377
+
+            -now check in the manager1 machine
+	docker@manager1:~$ docker node ls
+
+	similarly copy the same in the other node(worker2) machines as well.
+
+7. On manager run standard docker commands
+
+    docker@manager1:~$docker info
+    check the swarm section 
+    no of manager, nodes etc
+
+    Now check docker swarm command options 
+    docker@manager1:~$docker swarm 
+
+8. To run the containers on our node machines
+
+	login to your http://hub.docker.com
+ 	-explore to official repositories
+	- for this session I would like to go for using 'nginx' image
+
+        under the manager1 terminal , execute the following command
+	syntax:docker service create --replicas 3 -p 80:80 --name <serviceName> nginx
+	 servicename ...we can give any name as per our requirement.
+
+	docker@manager1:~docker service create --replicas 3 -p 80:80 --name web1 nginx
+	 (Note: while it is running , open another terminal of manager 1)
+		$docker-machine ssh manager1
+	to check the service list
+		docker@manager1:~ docker service ls
+	to check nginx is running on all the machines
+		docker@manager1:~$ docker service ps web1
+
+9. Now, we need to check 'nginx' web server is running in all the three nodes 
+	-open browser and hit the ip address of the machines
+		-http://192.168.99.101/
+		-http://192.168.99.102/
+		-http://192.168.99.103/
+
+10. docker swarm useful here, we can scaleup and scale down services with the following command
+	-this command should be executed in manager node only
+	 syntax: docker service scale <serviceName>=2
+
+	docker@manager1:~$docker service scale web1=4
+                 (with the above command now web1 service will run on the 4 node machines)
+
+	To check the service is running in all the nodes
+	docker@manager1:~$ docker service ps web1
+
+       To scale down the services running only in few machines
+	docker@manager1:~$docker service scale web1=2
+	docker@manager1:~$ docker service ls
+	docker@manager1:~$ docker service ps web1
+
+
+11. Inspecting the node machines
+	-this command to be executed only on manager machines
+	syntax: docker node inspect <nodename>
+	docker@manager1:~$ docker node inspect manager1
+  			or(self also considered as manager machine)
+	docker@manager1:~$ docker node inspect self
+
+	docker@manager1:~$ docker node inspect worker1
+	docker@manager1:~$ docker node inspect worker2
+
+12. If we want to update the service(nginx) version in all the containers, using docker swarm is 
+       very easy and portable.
+	syntax: docker service update --image imagename:version servicename
+	              docker service update --image nginx:1.14.0 <serviceName>
+	docker@manager1:~$ docker service update --image nginx:1.14.0 web1	
+
+13. To Shutdown your node machine
+	syntax: docker node update --availability drain <machine-name>
+
+	docker@manager1:~$ docker node update --availability drain worker1
+	docker@manager1:~$docker node ls
+
+14. Remove the services from the machines
+
+	 syntax: docker service rm <serviceName>
+	docker@manager1:~$ docker service rm web1
+	
+                To Leave the swarm
+	syntax: docker swarm leave  
+                      (note: need to execute this command on the machine where you want to leave it from swarm)
+		docker@worker1:~$ docker swarm leave
+		    Node left the swarm.
+	To stop the machine
+	(Note: need to run this machine from the main docker terminal)
+	syntax:docker-machine stop machineName 
+		India@LAPTOP-VODHAM22 MINGW64 ~/dmachines~$docker-machine stop worker1
+	to remove the machine
+	syntax: $docker-machine rm machineName 
+		India@LAPTOP-VODHAM22 MINGW64 ~/dmachines~$docker-machine rm worker1
+	
+	
+Notes on DockerSwarm
+------------------------------
+A swarm is a group of machines that are running Docker and joined into a cluster
+A cluster is managed by swarm manager
+The machines in a swarm can be physical or virtual. After joining a swarm, they are referred to as nodes
+Swarm managers are the only machines in a swarm that can execute your commands, or authorise other machines to join the swarm as workers
+
+Workers are just there to provide capacity and do not have the authority to tell any other machine what it can and cannot do.
+
+you can have a node join as a worker or as a manager. At any point in time, there is only one LEADER and the other manager nodes will be as backup in case the current LEADER opts out
+
+
+
+
+
+
+
+

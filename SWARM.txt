@@ -1,0 +1,35 @@
+Docker Swarm is a clustering and scheduling tool for Docker containers.
+With Swarm, IT administrators and developers can establish and manage a cluster of Docker nodes as a single virtual system.
+
+Why DockerSwarm?
+Docker Swarm helps guarantee high service availability
+By implementing multiple managers, developers ensure that the system can continue to function even if one of the manager nodes fails. Docker recommends a maximum of seven manager nodes for each cluster.
+
+
+Swarm Mode
+===========
+
+
+A swarm is a cluster of one or more computers running Docker. 
+It can consist of one or more machines, so you can use swarm functionality on your local machine.
+
+
+Docker Swarm Mode comes integrated with Docker Platform. Starting 1.12, Docker Swarm Mode is rightly integrated which means that you don’t need to install anything outside to run Docker Swarm. Just initialize it and you can get started.
+
+
+why do we need Docker Container Orchestration
+=======================================
+
+Imagine that you had to run hundreds of containers. You can easily see that if they are running in a distributed mode, there are multiple features that you will need from a management angle to make sure that the cluster is up and running, is healthy and more.
+
+Some of these necessary features include:
+
+● Health Checks on the Containers
+● Launching a fixed set of Containers for a particular Docker image
+● Scaling the number of Containers up and down depending on the load
+● Performing rolling update of software across containers
+● and more…
+
+Docker Swarm has capabilities to help us implement all those great features - all through simple CLIs.
+
+ it works very well with the Docker command line tools like docker and docker-machine, and provides the basic ability to deploy a Docker container to a collection of machines running the Docker Engine. 
